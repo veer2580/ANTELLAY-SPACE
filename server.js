@@ -19,6 +19,20 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
+// Clean URLs Helper (allows /login instead of /login.html)
+app.get('/:page', (req, res, next) => {
+    const page = req.params.page;
+    if (page.startsWith('api')) {
+        return next();
+    }
+    const filePath = path.join(__dirname, `${page}.html`);
+    if (fs.existsSync(filePath)) {
+        res.sendFile(filePath);
+    } else {
+        next();
+    }
+});
+
 // Ensure Data Directory Exists
 const DB_DIR = path.join(__dirname, 'data');
 const DB_FILE = path.join(DB_DIR, 'space_db.json');
