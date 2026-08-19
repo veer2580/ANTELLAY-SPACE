@@ -406,11 +406,15 @@ app.get('/api/spacetrack/query', async (req, res) => {
 });
 
 // Start Express Server
-app.listen(PORT, () => {
-    console.log(`=======================================================`);
-    console.log(`🚀 ANTALLY SPACE CONTROL BACKEND SERVER RUNNING`);
-    console.log(`📡 Local Access URL: http://localhost:${PORT}`);
-    console.log(`💾 Dotenv Config: Loaded from .env`);
-    console.log(`=======================================================`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`=======================================================`);
+        console.log(`🚀 ANTALLY SPACE CONTROL BACKEND SERVER RUNNING`);
+        console.log(`📡 Local Access URL: http://localhost:${PORT}`);
+        console.log(`💾 Dotenv Config: Loaded from .env`);
+        console.log(`=======================================================`);
+    });
+}
+
+module.exports = app;
 
