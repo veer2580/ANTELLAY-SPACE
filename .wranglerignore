@@ -1,0 +1,17 @@
+# Ignore dependencies and module configurations
+node_modules/
+package-lock.json
+package.json
+
+# Ignore local config files
+.env
+.env.example
+vercel.json
+
+# Ignore git and agent configs
+.git/
+.gitignore
+.system_generated/
+downloaded_src/
+temp_downloaded_code/
+*.log
