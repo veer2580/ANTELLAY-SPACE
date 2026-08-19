@@ -125,3 +125,47 @@
       primary.play().catch(() => {});
     });
 
+    // Space Nebula Mouse Parallax
+    const heroSection = document.getElementById("hero");
+    if (heroSection) {
+      heroSection.addEventListener("mousemove", (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        heroSection.style.setProperty("--mx", `${x}px`);
+        heroSection.style.setProperty("--my", `${y}px`);
+        heroSection.classList.add("mouse-active");
+      });
+      heroSection.addEventListener("mouseleave", () => {
+        heroSection.classList.remove("mouse-active");
+      });
+    }
+
+    // Dynamic Shooting Stars Creator
+    const createShootingStars = () => {
+      const hero = document.getElementById("hero");
+      if (!hero) return;
+      
+      const sky = document.createElement("div");
+      sky.className = "space-sky";
+      
+      for (let i = 0; i < 4; i++) {
+        const star = document.createElement("div");
+        star.className = "shooting-star";
+        star.style.left = `${Math.random() * 80 + 10}%`;
+        star.style.top = `${Math.random() * 30 + 5}%`;
+        star.style.animationDelay = `${Math.random() * 8}s`;
+        star.style.animationDuration = `${Math.random() * 4 + 4}s`;
+        sky.appendChild(star);
+      }
+      
+      hero.appendChild(sky);
+    };
+
+    // Initialize shooting stars
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", createShootingStars);
+    } else {
+      createShootingStars();
+    }
+
