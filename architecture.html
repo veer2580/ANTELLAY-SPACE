@@ -1,0 +1,1735 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    
+<meta charset="UTF-8">
+    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<title>
+Architecture | Antellay Space
+</title>
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="css/style.css">
+    
+<style>
+        :root {
+            --bg-dark: #07080a;
+            --bg-panel: #111318;
+            --bg-card: #15181e;
+            --accent-orange: #f26f22;
+            --text-main: #ffffff;
+            --text-muted: #8b92a5;
+            --border-color: #2a2d36;
+            --border-light: rgba(255, 255, 255, 0.05);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        /* ----- LOAD & SCROLL ANIMATIONS ----- */        .hero {
+            animation: pageIn 0.9s ease-out both;
+        }
+        .hero-content >
+ * {
+            animation: riseIn 0.7s ease-out both;
+        }
+        .hero-content >
+ *:nth-child(1) {
+ animation-delay: 0.1s;
+ }
+        .hero-content >
+ *:nth-child(2) {
+ animation-delay: 0.2s;
+ }
+        .hero-content >
+ *:nth-child(3) {
+ animation-delay: 0.32s;
+ }
+        .hero-content >
+ *:nth-child(4) {
+ animation-delay: 0.44s;
+ }
+        @keyframes pageIn {
+            from {
+ opacity: 0;
+ }
+            to {
+ opacity: 1;
+ }
+        }
+        @keyframes riseIn {
+            from {
+ opacity: 0;
+ transform: translateY(26px);
+ }
+            to {
+ opacity: 1;
+ transform: translateY(0);
+ }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* ----- MAIN CONTENT ----- */        .main-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .main-content .site-header {
+            left: 50%;
+        }
+        /* ----- HERO SECTION ----- */        .hero {
+            padding: 140px 50px 80px 50px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: -100px;
+            background: url('assets/images/ChatGPT Image Aug 6, 2026, 01_37_51 PM.png') no-repeat center center/cover;
+            z-index: 0;
+            will-change: transform;
+            animation: heroShrink 14s ease-in-out infinite alternate;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+            background: linear-gradient(180deg, rgba(7,8,10,0.4) 0%, rgba(7,8,10,0.7) 100%);
+            z-index: 1;
+        }
+        @keyframes heroFloat {
+            from {
+ transform: scale(1.05) translate3d(0, 0, 0);
+ }
+            to {
+ transform: scale(1.1) translate3d(-70px, 25px, 0);
+ }
+        }
+        @keyframes heroShrink {
+
+      from {
+ transform: scale(1.08) translate3d(0, 0, 0);
+ }
+
+      to {
+ transform: scale(1) translate3d(-60px, 25px, 0);
+ }
+
+    }
+            
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .subtitle {
+            color: var(--accent-orange);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: 8px;
+            margin-bottom: 25px;
+        }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 560px;
+            margin: 0 auto 50px;
+        }
+        /* ----- FEATURES BAR ----- */        .features-bar {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            background: rgba(17, 19, 24, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            max-width: 900px;
+            width: 100%;
+            padding: 20px 0;
+        }
+        .feature-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            border-right: 1px solid var(--border-color);
+        }
+        .feature-item:last-child {
+            border-right: none;
+        }
+        .feature-item i {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+        }
+        .feature-item span {
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            color: var(--text-main);
+        }
+        /* ----- SECTION WRAPPER ----- */        .section-wrapper {
+            padding: 40px 50px;
+            background-color: var(--bg-dark);
+            position: relative;
+            z-index: 3;
+        }
+        .section-title {
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            color: var(--text-main);
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+        /* ----- ARCHITECTURE DIAGRAM ----- */        .architecture-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 802 / 441;
+            min-height: 460px;
+            background:                radial-gradient(circle at 66% 50%, rgba(255,145,40,0.06), transparent 18%),                radial-gradient(circle at 18% 40%, rgba(255,255,255,0.02), transparent 30%),                linear-gradient(135deg, #0a0c12, #07090d 55%, #04060a);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        .architecture-container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:                linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),                linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+            background-size: 38px 38px;
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+            pointer-events: none;
+            z-index: 1;
+            animation: gridDrift 18s linear infinite;
+        }
+        @keyframes gridDrift {
+            from {
+ background-position: 0 0, 0 0;
+ }
+            to {
+ background-position: 38px 38px, 38px 38px;
+ }
+        }
+        .starfield {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .starfield i {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            background: #ffbd5a;
+            opacity: 0;
+            animation: star 6s ease-in-out infinite;
+        }
+        .starfield i:nth-child(1) {
+ left: 12%;
+ top: 70%;
+ }
+        .starfield i:nth-child(2) {
+ left: 22%;
+ top: 30%;
+ animation-delay: 1s;
+ }
+        .starfield i:nth-child(3) {
+ left: 42%;
+ top: 12%;
+ animation-delay: 2s;
+ }
+        .starfield i:nth-child(4) {
+ left: 35%;
+ top: 85%;
+ animation-delay: 0.5s;
+ }
+        .starfield i:nth-child(5) {
+ left: 68%;
+ top: 15%;
+ animation-delay: 1.5s;
+ }
+        .starfield i:nth-child(6) {
+ left: 55%;
+ top: 60%;
+ animation-delay: 2.5s;
+ }
+        .starfield i:nth-child(7) {
+ left: 85%;
+ top: 25%;
+ animation-delay: 0.8s;
+ }
+        .starfield i:nth-child(8) {
+ left: 90%;
+ top: 70%;
+ animation-delay: 1.8s;
+ }
+        .starfield i:nth-child(9) {
+ left: 74%;
+ top: 88%;
+ animation-delay: 3s;
+ }
+        .starfield i:nth-child(10) {
+ left: 8%;
+ top: 62%;
+ animation-delay: 2.2s;
+ }
+        @keyframes star {
+            0% {
+ opacity: 0;
+ transform: translateY(0);
+ }
+            20% {
+ opacity: 0.9;
+ }
+            100% {
+ opacity: 0;
+ transform: translateY(-40px);
+ }
+        }
+        .diagram-grid {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        .diagram-title {
+            position: absolute;
+            left: 4.1%;
+            top: 4.2%;
+            font-size: 0.8rem;
+            letter-spacing: 7px;
+            font-weight: 500;
+            color: var(--text-main);
+            z-index: 4;
+            animation: titleIn 0.8s ease-out both;
+        }
+        @keyframes titleIn {
+            from {
+ opacity: 0;
+ transform: translateY(-12px);
+ }
+            to {
+ opacity: 1;
+ transform: translateY(0);
+ }
+        }
+        .diagram-title::after {
+            content: "";
+            display: block;
+            width: 21px;
+            height: 2px;
+            background: #d87a2b;
+            margin-top: 11px;
+            animation: barGrow 1.2s ease-out 0.3s both;
+        }
+        @keyframes barGrow {
+            from {
+ width: 0;
+ opacity: 0;
+ }
+            to {
+ width: 21px;
+ opacity: 1;
+ }
+        }
+        .diagram-layers {
+            position: absolute;
+            left: 0;
+            top: 12%;
+            width: 51%;
+            height: 78%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 3;
+        }
+        .layer-card {
+            position: relative;
+            height: 18%;
+            min-height: 46px;
+            padding: 9px 46px 7px 4%;
+            background: linear-gradient(100deg, rgba(28,31,36,0.97), rgba(16,18,22,0.91));
+            border: 1px solid rgba(148,155,166,0.38);
+            border-radius: 7px;
+            box-shadow: 0 9px 18px rgba(0,0,0,0.42), inset 0 1px rgba(255,255,255,0.035);
+            clip-path: polygon(2% 0, 96% 0, 100% 50%, 96% 100%, 0 100%);
+            z-index: 1;
+            opacity: 0;
+            transform: translateX(-40px);
+            animation: cardIn 0.6s ease-out forwards;
+        }
+        .layer-card:nth-child(1) {
+ animation-delay: 0.2s;
+ }
+        .layer-card:nth-child(2) {
+ animation-delay: 0.35s;
+ }
+        .layer-card:nth-child(3) {
+ animation-delay: 0.5s;
+ }
+        .layer-card:nth-child(4) {
+ animation-delay: 0.65s;
+ }
+        .layer-card:nth-child(5) {
+ animation-delay: 0.8s;
+ }
+        @keyframes cardIn {
+            from {
+ opacity: 0;
+ transform: translateX(-40px);
+ }
+            to {
+ opacity: 1;
+ transform: translateX(0);
+ }
+        }
+        .layer-title {
+            color: var(--accent-orange);
+            font-size: 0.62rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .layer-desc {
+            color: var(--text-muted);
+            font-size: 0.58rem;
+            line-height: 1.45;
+        }
+        .layer-num {
+            position: absolute;
+            right: 6%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.6rem;
+            background: rgba(0,0,0,0.12);
+            animation: numPulse 2.4s ease-in-out infinite;
+        }
+        @keyframes numPulse {
+            0%, 100% {
+ border-color: rgba(255,255,255,0.14);
+ color: var(--text-muted);
+ box-shadow: none;
+ }
+            50% {
+ border-color: rgba(255,157,65,0.6);
+ color: var(--accent-orange);
+ box-shadow: 0 0 10px rgba(255,132,39,0.4);
+ }
+        }
+        .diagram-lines {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .diagram-lines svg {
+            width: 100%;
+            height: 100%;
+        }
+        .wire {
+            fill: none;
+            stroke: #e97b2b;
+            stroke-width: 1.45;
+            filter: drop-shadow(0 0 4px rgba(255,132,35,0.7));
+            stroke-dasharray: 8 12;
+            opacity: 0;
+            animation: wireFlow 2.5s linear infinite;
+        }
+        @keyframes wireFlow {
+            0% {
+ opacity: 0;
+ stroke-dashoffset: 0;
+ }
+            30% {
+ opacity: 1;
+ }
+            100% {
+ opacity: 1;
+ stroke-dashoffset: -80;
+ }
+        }
+        .wire:nth-of-type(1) {
+ animation-duration: 2.5s;
+ }
+        .wire:nth-of-type(2) {
+ animation-duration: 2.2s;
+ }
+        .wire:nth-of-type(3) {
+ animation-duration: 2.8s;
+ }
+        .wire:nth-of-type(4) {
+ animation-duration: 2.4s;
+ }
+        .wire:nth-of-type(5) {
+ animation-duration: 2.6s;
+ }
+        .wire:nth-of-type(6) {
+ animation-duration: 2.3s;
+ }
+        .wire:nth-of-type(7) {
+ animation-duration: 2.7s;
+ }
+        .wire:nth-of-type(8) {
+ animation-duration: 2.5s;
+ }
+        .wire:nth-of-type(9) {
+ animation-duration: 2.2s;
+ }
+        .wire-dot {
+            fill: #ff9b48;
+            filter: drop-shadow(0 0 5px #ff8a32);
+            animation: dotPulse 1.6s ease-in-out infinite;
+        }
+        .wire-dot:nth-of-type(2n) {
+ animation-delay: 0.3s;
+ }
+        @keyframes dotPulse {
+            0%, 100% {
+ opacity: 0.5;
+ }
+            50% {
+ opacity: 1;
+ }
+        }
+        .diagram-center {
+            position: absolute;
+            left: 59.7%;
+            top: 32.2%;
+            width: 13.8%;
+            aspect-ratio: 1;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: coreFloat 4s ease-in-out infinite, corePulse 3s ease-in-out infinite;
+        }
+        @keyframes coreFloat {
+            0%, 100% {
+ transform: translateY(0);
+ }
+            50% {
+ transform: translateY(-8px);
+ }
+        }
+        @keyframes corePulse {
+            0%, 100% {
+ filter: drop-shadow(0 0 0 rgba(255,130,35,0));
+ }
+            50% {
+ filter: drop-shadow(0 0 18px rgba(255,130,35,0.35));
+ }
+        }
+        .core-ring {
+            position: absolute;
+            inset: -18%;
+            border: 1.5px dashed rgba(255,157,65,0.85);
+            border-radius: 50%;
+            animation: spin 8s linear infinite;
+            box-shadow: 0 0 12px rgba(255,120,40,0.45), inset 0 0 12px rgba(255,120,40,0.25);
+        }
+        .core-ring::after {
+            content: "";
+            position: absolute;
+            inset: -13%;
+            border: 1.5px dashed rgba(255,157,65,0.55);
+            border-radius: 50%;
+            animation: spin 5s linear infinite reverse;
+        }
+        .core-ring .ring-dot-1,        .core-ring .ring-dot-2 {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ffb657;
+            box-shadow: 0 0 12px 4px rgba(255,150,50,0.85), 0 0 24px 8px rgba(255,120,40,0.5);
+        }
+        .core-ring .ring-dot-1 {
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .core-ring .ring-dot-2 {
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ffd24a;
+            box-shadow: 0 0 12px 4px rgba(255,190,60,0.95), 0 0 24px 8px rgba(255,160,50,0.5);
+        }
+        @keyframes spin {
+            from {
+ transform: rotate(0deg);
+ }
+            to {
+ transform: rotate(360deg);
+ }
+        }
+        .ai-hexagon {
+            width: 70%;
+            aspect-ratio: 1;
+            background: linear-gradient(145deg, #704014, #241609);
+            clip-path: polygon(25% 3%, 75% 3%, 98% 50%, 75% 97%, 25% 97%, 2% 50%);
+            filter: drop-shadow(0 0 11px rgba(231,124,37,0.38));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ai-hexagon-inner {
+            width: 84%;
+            height: 84%;
+            background: #0b0c0f;
+            clip-path: polygon(25% 3%, 75% 3%, 98% 50%, 75% 97%, 25% 97%, 2% 50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #ffad5d;
+            font-size: 1.9rem;
+            animation: aiGlow 2s ease-in-out infinite;
+        }
+        @keyframes aiGlow {
+            0%, 100% {
+ text-shadow: 0 0 6px rgba(255,145,53,0.3);
+ }
+            50% {
+ text-shadow: 0 0 18px rgba(255,145,53,0.9);
+ }
+        }
+        .diagram-outcomes {
+            position: absolute;
+            right: 1.4%;
+            top: 10.4%;
+            width: 18.5%;
+            height: 72%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 4;
+        }
+        .outcome-card {
+            height: 23%;
+            min-height: 52px;
+            border: 1px solid rgba(120,125,134,0.32);
+            background: linear-gradient(145deg, rgba(20,22,27,0.96), rgba(9,11,15,0.94));
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            padding: 9px 12px;
+            box-shadow: inset 0 1px rgba(255,255,255,0.025);
+            opacity: 0;
+            transform: translateX(40px);
+            animation: outcomeIn 0.6s ease-out forwards;
+        }
+        .outcome-card:nth-child(1) {
+ animation-delay: 0.9s;
+ }
+        .outcome-card:nth-child(2) {
+ animation-delay: 1.05s;
+ }
+        .outcome-card:nth-child(3) {
+ animation-delay: 1.2s;
+ }
+        .outcome-card:nth-child(4) {
+ animation-delay: 1.35s;
+ }
+        @keyframes outcomeIn {
+            from {
+ opacity: 0;
+ transform: translateX(40px);
+ }
+            to {
+ opacity: 1;
+ transform: translateX(0);
+ }
+        }
+        .outcome-card i {
+            width: 30px;
+            height: 30px;
+            margin-right: 12px;
+            flex: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d6d0c6;
+            font-size: 1.1rem;
+            animation: iconPulse 2.4s ease-in-out infinite;
+        }
+        .outcome-card:nth-child(2n) i {
+ animation-delay: 0.4s;
+ }
+        @keyframes iconPulse {
+            0%, 100% {
+ transform: scale(1);
+ color: #d6d0c6;
+ }
+            50% {
+ transform: scale(1.15);
+ color: var(--accent-orange);
+ }
+        }
+        .outcome-card span {
+            font-size: 0.6rem;
+            line-height: 1.55;
+            letter-spacing: 0.3px;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+        /* ----- INFRASTRUCTURE SECTION ----- */        .infrastructure-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .infra-card {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .infra-card:hover {
+            transform: translateY(-5px);
+            border-color: #4a4d5c;
+        }
+        .infra-card i {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+        .infra-title {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .infra-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        /* ----- FOOTER CTA SECTION ----- */        .footer-cta {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            padding: 60px 50px;
+            background-image: url('assets/images/ChatGPT Image Aug 6, 2026, 03_11_49 PM.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .footer-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+            background: linear-gradient(90deg, #07080a 0%, rgba(7,8,10,0.6) 60%, rgba(7,8,10,0) 100%);
+            z-index: 1;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+        }
+        .cta-subtitle {
+            color: var(--accent-orange);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .cta-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--text-main);
+            line-height: 1.3;
+            margin-bottom: 30px;
+        }
+        .explore-btn {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px 25px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        .explore-btn:hover {
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
+        }
+        /* ----- MOBILE MENU ----- */        .menu-toggle {
+            display: none;
+            width: 52px;
+            height: 52px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(4, 7, 13, 0.72);
+            cursor: pointer;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            z-index: 15;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+        }
+        .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+ transform: translateY(8px) rotate(45deg);
+ background: var(--accent-orange);
+ }
+        .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+ opacity: 0;
+ }
+        .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+ transform: translateY(-8px) rotate(-45deg);
+ background: var(--accent-orange);
+ }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 84px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 44px);
+            background: rgba(6, 8, 13, 0.96);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 20px;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 14;
+            backdrop-filter: blur(18px);
+        }
+        .mobile-menu a {
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-main);
+            transition: background 0.25s ease, color 0.25s ease;
+        }
+        .mobile-menu a:hover, .mobile-menu a.active {
+            background: rgba(242, 111, 34, 0.1);
+            color: var(--accent-orange);
+        }
+        @media (max-width: 980px) {
+            .menu-toggle {
+ display: flex;
+ }
+            .mobile-menu.open {
+ display: flex;
+ }
+            .main-content .site-header {
+ grid-template-columns: 1fr auto;
+ gap: 12px;
+ }
+            .main-content .site-header .contact {
+ display: none;
+ }
+            .menu-toggle {
+ position: static;
+ justify-self: end;
+ }
+        }
+        /* ----- RESPONSIVE ----- */        @media (max-width: 980px) {
+            .architecture-container {
+                aspect-ratio: auto;
+                min-height: 0;
+                padding: 36px 22px 40px;
+            }
+            .diagram-grid {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 26px;
+            }
+            .diagram-title {
+                position: static;
+                align-self: flex-start;
+                margin-bottom: 6px;
+            }
+            .diagram-lines {
+ display: none;
+ }
+            .diagram-layers {
+                position: static;
+                width: 100%;
+                height: auto;
+                gap: 12px;
+            }
+            .layer-card {
+                height: auto;
+                min-height: 58px;
+            }
+            .diagram-center {
+                position: static;
+                width: 90px;
+                margin: 8px 0;
+            }
+            .diagram-outcomes {
+                position: static;
+                width: 100%;
+                height: auto;
+                gap: 12px;
+            }
+            .outcome-card {
+                height: auto;
+                min-height: 56px;
+            }
+            .infrastructure-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            nav ul {
+ display: none;
+ }
+        }
+        @media (max-width: 680px) {
+            .main-content .site-header {
+ left: 50%;
+ }
+            .site-header .brand-name {
+ font-size: 13px;
+ letter-spacing: 5px;
+ }
+            .site-header .brand-sub {
+ letter-spacing: 3px;
+ }
+            .hero {
+ padding: 120px 20px 60px 20px;
+ }
+            .hero h1 {
+ font-size: clamp(1.8rem, 9vw, 2.4rem);
+ letter-spacing: 4px;
+ word-break: break-word;
+ }
+            .features-bar {
+ flex-wrap: wrap;
+ gap: 8px 0;
+ }
+            .feature-item {
+ min-width: 45%;
+ border-right: none;
+ padding: 10px 0;
+ }
+            .section-wrapper {
+ padding: 30px 20px;
+ }
+            .layer-title {
+ font-size: 0.68rem;
+ }
+            .layer-desc {
+ font-size: 0.6rem;
+ }
+            .layer-card {
+ padding-left: 6%;
+ }
+            .diagram-title {
+ font-size: 0.68rem;
+ letter-spacing: 4px;
+ }
+            .diagram-center {
+ width: 80px;
+ }
+            .ai-hexagon-inner {
+ font-size: 1.5rem;
+ }
+            .outcome-card span {
+ font-size: 0.62rem;
+ }
+            .infrastructure-grid {
+ grid-template-columns: 1fr;
+ }
+            .footer-cta {
+ padding: 40px 25px;
+ }
+        }
+    
+</style>
+
+</head>
+
+<body>
+    
+<!-- Main Content -->
+    
+<div class="main-content">
+        
+<!-- Header -->
+        
+<header class="site-header">
+            
+<a class="brand" href="index.html">
+                
+<svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+                    
+<path d="M24 4 6 43l18-12 18 12L24 4Z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+                    
+<path d="M24 15v16M17 35l7-4 7 4" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+                
+</svg>
+                
+<span>
+
+<span class="brand-name">
+ANTELLAY
+</span>
+
+<span class="brand-sub">
+SPACE
+</span>
+
+</span>
+            
+</a>
+            
+<nav class="nav" aria-label="Primary">
+                
+<a href="architecture.html" class="active">
+Architecture
+</a>
+                
+<a href="thesis.html">
+Thesis
+</a>
+                
+<a href="news.html">
+News
+</a>
+        
+<a href="product.html">
+Products
+</a>
+                
+<a href="about.html">
+About Us
+</a>
+                
+<a href="contact.html">
+Contact
+</a>
+            
+</nav>
+            
+<a class="contact" href="login.html">
+Login
+</a>
+            
+<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                
+<span>
+
+</span>
+
+<span>
+
+</span>
+
+<span>
+
+</span>
+            
+</button>
+        
+</header>
+        
+<!-- Mobile Menu -->
+        
+<div class="mobile-menu" id="mobile-menu">
+            
+<a href="architecture.html" class="active">
+Architecture
+</a>
+            
+<a href="thesis.html">
+Thesis
+</a>
+            
+<a href="news.html">
+News
+</a>
+        
+<a href="product.html">
+Products
+</a>
+            
+<a href="about.html">
+About Us
+</a>
+            
+<a href="contact.html">
+Contact Us
+</a>
+        
+</div>
+        
+<!-- Hero -->
+        
+<section class="hero">
+            
+<div class="hero-content">
+                
+<div class="subtitle">
+Built for space. Powered by AI.
+</div>
+                
+<h1>
+ARCHITECTURE
+</h1>
+                
+<p>
+Antellay SpaceOS is built on a modular, AI-native architecture that connects space systems, data, and intelligence into a unified operating layer.
+</p>
+                
+<div class="features-bar">
+                    
+<div class="feature-item">
+                        
+<i class="fa-solid fa-cubes">
+
+</i>
+                        
+<span>
+MODULAR
+</span>
+                    
+</div>
+                    
+<div class="feature-item">
+                        
+<i class="fa-solid fa-braille">
+
+</i>
+                        
+<span>
+SCALABLE
+</span>
+                    
+</div>
+                    
+<div class="feature-item">
+                        
+<i class="fa-solid fa-shield-halved">
+
+</i>
+                        
+<span>
+SECURE
+</span>
+                    
+</div>
+                    
+<div class="feature-item">
+                        
+<i class="fa-solid fa-brain">
+
+</i>
+                        
+<span>
+AI-NATIVE
+</span>
+                    
+</div>
+                    
+<div class="feature-item">
+                        
+<i class="fa-solid fa-clock-rotate-left">
+
+</i>
+                        
+<span>
+REAL-TIME
+</span>
+                    
+</div>
+                
+</div>
+            
+</div>
+        
+</section>
+        
+<!-- Lower Sections -->
+        
+<div class="section-wrapper">
+            
+<!-- Architecture Diagram -->
+            
+<div class="architecture-container">
+                
+<div class="starfield" aria-hidden="true">
+
+<i>
+
+</i>
+
+<i>
+
+</i>
+
+<i>
+
+</i>
+
+<i>
+
+</i>
+
+<i>
+
+</i>
+
+<i>
+
+</i>
+
+<i>
+
+</i>
+
+<i>
+
+</i>
+
+<i>
+
+</i>
+
+<i>
+
+</i>
+
+</div>
+                
+<div class="diagram-grid">
+                    
+<div class="diagram-title">
+SPACEOS ARCHITECTURE
+</div>
+                    
+<!-- Left: Layers -->
+                    
+<div class="diagram-layers">
+                        
+<div class="layer-card">
+                            
+<div>
+                                
+<div class="layer-title">
+Application Layer
+</div>
+                                
+<div class="layer-desc">
+Mission Control &bull; Analytics &bull; Copilot &bull; Automation &bull; APIs
+</div>
+                            
+</div>
+                            
+<div class="layer-num">
+01
+</div>
+                        
+</div>
+                        
+<div class="layer-card">
+                            
+<div>
+                                
+<div class="layer-title">
+Intelligence Layer
+</div>
+                                
+<div class="layer-desc">
+AI Models &bull; Reasoning Engine &bull; Prediction &bull; Optimization
+</div>
+                            
+</div>
+                            
+<div class="layer-num">
+02
+</div>
+                        
+</div>
+                        
+<div class="layer-card">
+                            
+<div>
+                                
+<div class="layer-title">
+Data Layer
+</div>
+                                
+<div class="layer-desc">
+Data Processing &bull; Fusion &bull; Normalization &bull; Storage
+</div>
+                            
+</div>
+                            
+<div class="layer-num">
+03
+</div>
+                        
+</div>
+                        
+<div class="layer-card">
+                            
+<div>
+                                
+<div class="layer-title">
+Space Infrastructure Layer
+</div>
+                                
+<div class="layer-desc">
+Satellites &bull; Ground Stations &bull; Sensors &bull; Missions
+</div>
+                            
+</div>
+                            
+<div class="layer-num">
+04
+</div>
+                        
+</div>
+                        
+<div class="layer-card">
+                            
+<div>
+                                
+<div class="layer-title">
+Cloud &amp; Edge Infrastructure
+</div>
+                                
+<div class="layer-desc">
+Cloud &bull; Edge Nodes &bull; Networking &bull; Security
+</div>
+                            
+</div>
+                            
+<div class="layer-num">
+05
+</div>
+                        
+</div>
+                    
+</div>
+                    
+<!-- Wiring SVG -->
+                    
+<div class="diagram-lines">
+                        
+<svg viewBox="0 0 1200 660" preserveAspectRatio="none">
+                            
+<path class="wire" d="M500 94 H625 Q645 94 645 114 V245 H720"/>
+                            
+<path class="wire" d="M500 198 H625 Q645 198 645 218 V270 H720"/>
+                            
+<path class="wire" d="M500 302 H625 Q645 302 645 282 V295 H720"/>
+                            
+<path class="wire" d="M500 406 H625 Q645 406 645 370 V320 H720"/>
+                            
+<path class="wire" d="M500 510 H625 Q645 510 645 394 V345 H720"/>
+                            
+<path class="wire" d="M830 265 H890 Q910 265 910 238 V115 H950"/>
+                            
+<path class="wire" d="M830 285 H930 Q950 285 950 255 V240 H950"/>
+                            
+<path class="wire" d="M830 305 H910 Q920 305 920 355 V365 H950"/>
+                            
+<path class="wire" d="M830 325 H895 Q900 325 900 475 V490 H950"/>
+                            
+<circle class="wire-dot" cx="625" cy="94" r="3"/>
+                            
+<circle class="wire-dot" cx="625" cy="198" r="3"/>
+                            
+<circle class="wire-dot" cx="625" cy="302" r="3"/>
+                            
+<circle class="wire-dot" cx="625" cy="406" r="3"/>
+                            
+<circle class="wire-dot" cx="625" cy="510" r="3"/>
+                            
+<circle class="wire-dot" cx="950" cy="115" r="3"/>
+                            
+<circle class="wire-dot" cx="950" cy="240" r="3"/>
+                            
+<circle class="wire-dot" cx="950" cy="365" r="3"/>
+                            
+<circle class="wire-dot" cx="950" cy="490" r="3"/>
+                        
+</svg>
+                    
+</div>
+                    
+<!-- Center: AI Node -->
+                    
+<div class="diagram-center">
+                        
+<div class="core-ring">
+                            
+<span class="ring-dot-1">
+
+</span>
+                            
+<span class="ring-dot-2">
+
+</span>
+                        
+</div>
+                        
+<div class="ai-hexagon">
+
+<div class="ai-hexagon-inner">
+AI
+</div>
+
+</div>
+                    
+</div>
+                    
+<!-- Right: Outcomes -->
+                    
+<div class="diagram-outcomes">
+                        
+<div class="outcome-card">
+                            
+<i class="fa-solid fa-chart-line">
+
+</i>
+                            
+<span>
+Real-Time
+<br>
+Insights
+</span>
+                        
+</div>
+                        
+<div class="outcome-card">
+                            
+<i class="fa-solid fa-crosshairs">
+
+</i>
+                            
+<span>
+Autonomous
+<br>
+Decisions
+</span>
+                        
+</div>
+                        
+<div class="outcome-card">
+                            
+<i class="fa-solid fa-gears">
+
+</i>
+                            
+<span>
+Operational
+<br>
+Automation
+</span>
+                        
+</div>
+                        
+<div class="outcome-card">
+                            
+<i class="fa-solid fa-rocket">
+
+</i>
+                            
+<span>
+Mission
+<br>
+Success
+</span>
+                        
+</div>
+                    
+</div>
+                
+</div>
+            
+</div>
+            
+<!-- Infrastructure Grid -->
+            
+<div class="section-title reveal">
+BUILT ON MODERN INFRASTRUCTURE
+</div>
+            
+<div class="infrastructure-grid">
+                
+<div class="infra-card reveal">
+                    
+<i class="fa-solid fa-cloud">
+
+</i>
+                    
+<div class="infra-title">
+CLOUD NATIVE
+</div>
+                    
+<div class="infra-desc">
+Built on scalable, resilient cloud-native infrastructure.
+</div>
+                
+</div>
+                
+<div class="infra-card reveal">
+                    
+<i class="fa-solid fa-lock">
+
+</i>
+                    
+<div class="infra-title">
+SECURE BY DESIGN
+</div>
+                    
+<div class="infra-desc">
+End-to-end encryption, zero trust, and compliance ready.
+</div>
+                
+</div>
+                
+<div class="infra-card reveal">
+                    
+<i class="fa-solid fa-microchip">
+
+</i>
+                    
+<div class="infra-title">
+EDGE ENABLED
+</div>
+                    
+<div class="infra-desc">
+Real-time processing closer to satellites and ground systems.
+</div>
+                
+</div>
+                
+<div class="infra-card reveal">
+                    
+<i class="fa-solid fa-bolt">
+
+</i>
+                    
+<div class="infra-title">
+HIGH PERFORMANCE
+</div>
+                    
+<div class="infra-desc">
+Low latency, high throughput, mission critical.
+</div>
+                
+</div>
+                
+<div class="infra-card reveal">
+                    
+<i class="fa-solid fa-arrows-up-down-left-right">
+
+</i>
+                    
+<div class="infra-title">
+INFINITE SCALE
+</div>
+                    
+<div class="infra-desc">
+Designed to scale with the future of the space economy.
+</div>
+                
+</div>
+            
+</div>
+            
+<!-- Bottom CTA -->
+            
+<div class="footer-cta reveal">
+                
+<div class="cta-content">
+                    
+<div class="cta-subtitle">
+INTELLIGENCE. INFRASTRUCTURE. IMPACT.
+</div>
+                    
+<div class="cta-title">
+The architecture powering the next generation of space operations.
+</div>
+                    
+<a class="explore-btn" href="index.html#spaceos">
+                        EXPLORE SPACEOS 
+<i class="fa-solid fa-arrow-right">
+
+</i>
+                    
+</a>
+                
+</div>
+            
+</div>
+            
+<!-- Footer -->
+            
+</div>
+    
+<footer class="page">
+                
+<video class="footer-video" autoplay muted loop playsinline disablepictureinpicture src="assets/videos/WhatsApp Video 2026-08-11 at 12.12.58 PM.mp4"></video>
+                
+<div class="footer-top">
+                    
+<div class="footer-center">
+                        
+<div class="socials">
+                        
+<a href="https://www.linkedin.com/company/a-n-t-e-l-l-a-y-space/posts/?feedView=all" target="_blank" aria-label="LinkedIn">
+in
+</a>
+                        
+<a href="#" aria-label="Twitter">
+&#120143;
+</a>
+                        
+<a href="#" aria-label="Mail">
+&#9993;
+</a>
+                        
+<a href="https://www.instagram.com/antellay.tech?igsh=NDBoa3NoMjZ2Ynk3" target="_blank" aria-label="Instagram">
+<i class="fa-brands fa-instagram"></i>
+</a>
+                    
+</div>
+                    
+<a class="brand" href="index.html">
+                        
+<svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+
+<path d="M24 4 6 43l18-12 18 12L24 4Z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+
+<path d="M24 15v16M17 35l7-4 7 4" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+
+</svg>
+                        
+<span>
+
+<span class="brand-name">
+ANTELLAY
+</span>
+
+<span class="brand-sub">
+SPACE
+</span>
+
+</span>
+                    
+</a>
+                    
+</div>
+                    
+<a href="#" class="to-top" aria-label="Back to top">
+&#8593;
+</a>
+                
+</div>
+                
+<div class="copyright">
+&copy; 2026 ANTELLAY Tech. All Rights Reserved. A Celebso Group Company.
+</div>
+            
+</footer>
+    
+</div>
+    
+<script>
+        const revealEls = document.querySelectorAll(".reveal");        const revealObserver = new IntersectionObserver((entries) =>
+ {            entries.forEach((entry) =>
+ {                if (entry.isIntersecting) {                    entry.target.classList.add("in-view");                    revealObserver.unobserve(entry.target);                }            });        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });        revealEls.forEach((el) =>
+ revealObserver.observe(el));        const menuToggle = document.querySelector(".menu-toggle");        const mobileMenu = document.querySelector("#mobile-menu");        if (menuToggle && mobileMenu) {            menuToggle.addEventListener("click", () =>
+ {                const isOpen = mobileMenu.classList.toggle("open");                menuToggle.setAttribute("aria-expanded", String(isOpen));            });            mobileMenu.querySelectorAll("a").forEach((link) =>
+ {                link.addEventListener("click", () =>
+ {                    mobileMenu.classList.remove("open");                    menuToggle.setAttribute("aria-expanded", "false");                });            });        }    
+</script>
+
+</body>
+
+</html>

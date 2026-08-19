@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antellay Space | SpaceOS Mission Control</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="space-theme">
+
+    <canvas id="starfield-canvas"></canvas>
+
+    <div class="app-container">
+        <!-- SIDEBAR (MATCHING OFFICIAL ANTELLAY SPACE BRANDING) -->
+        <aside class="sidebar">
+            <div class="brand">
+                <!-- OFFICIAL ANTELLAY DELTA COMPASS VECTOR LOGO -->
+                <div class="brand-logo-official">
+                    <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 12 L84 78 L50 62 L16 78 Z" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round" fill="none"/>
+                        <path d="M50 12 L50 62" stroke="#E86A28" stroke-width="5" stroke-linecap="round"/>
+                        <circle cx="50" cy="50" r="3" fill="#FF7A29"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h2>ANTELLAY</h2>
+                    <p>• SPACE •</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-item active" data-tab="overview">
+                    <i class="fa-solid fa-grid-2"></i>
+                    <span>Overview</span>
+                </button>
+                <button class="nav-item" data-tab="orbit-intelligence">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>Orbit Intelligence</span>
+                </button>
+                <button class="nav-item" data-tab="telemetry">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                    <span>Telemetry</span>
+                </button>
+                <button class="nav-item" data-tab="donki-events">
+                    <i class="fa-solid fa-database"></i>
+                    <span>Data Sources</span>
+                </button>
+                <button class="nav-item" data-tab="world-model">
+                    <i class="fa-solid fa-circle-nodes"></i>
+                    <span>World Model</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-card" style="width: 100%;">
+                    <div style="display: flex; align-items: center; gap: 0.6rem;">
+                        <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="user-info">
+                            <span class="name">VEER</span>
+                        </div>
+                    </div>
+                    <button id="btn-logout" title="Sign Out" style="background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px 8px; font-size: 0.85rem; transition: color 0.2s; margin-left: auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-right-from-bracket" style="font-size: 1rem; color: var(--brand-orange);"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-wrapper">
+            <!-- TOP HEADER -->
+            <header class="top-header">
+                <div class="header-title">
+                    <span class="breadcrumb">Space Intelligence Reimagined • Building the AI Operating System for the Space Economy (SpaceOS)</span>
+                    <h1 id="page-title">MISSION CONTROL // GLOBAL OVERVIEW</h1>
+                </div>
+
+                <div class="header-actions">
+                    <button class="btn btn-sm btn-outline" id="btn-track-sat"><i class="fa-solid fa-crosshairs"></i> TRACK SATELLITE</button>
+                    <button class="btn btn-sm btn-outline" id="btn-reset-view"><i class="fa-solid fa-rotate-left"></i> RESET VIEW</button>
+
+                    <button class="btn btn-sm btn-outline sound-toggle" id="btn-toggle-sfx" title="Toggle SFX">
+                        <i class="fa-solid fa-volume-high" id="sfx-icon"></i> SFX ON
+                    </button>
+                </div>
+            </header>
+
+            <!-- VIEWPORT CONTAINER -->
+            <div class="content-viewport">
+                
+                <!-- 1. OVERVIEW TAB -->
+                <section class="tab-content active" id="tab-overview">
+                    <div class="grid-overview">
+                        <div class="card map-card">
+                            <div class="card-header">
+                                <h3><i class="fa-solid fa-globe"></i> LIVE EARTH ORBITAL VISUALIZER (ANTELLAY SPACEOS)</h3>
+                                <div class="map-controls">
+                                    <div class="view-toggle-group">
+                                        <button class="btn btn-sm btn-outline" id="btn-view-2d">2D MAP</button>
+                                        <button class="btn btn-sm btn-primary active-view" id="btn-view-3d">3D GLOBE</button>
+                                    </div>
+
+                                    <!-- SATELLITE MISSIONS FROM LIVE WEBSITE -->
+                                    <select id="sat-selector" class="custom-select">
+                                        <option value="88001">🚨 Emergency Response Satellite (ERS-1)</option>
+                                        <option value="88002">📡 VHF Marine & Aviation Ground Station (VHF-MAR-1)</option>
+                                        <option value="88003">🌌 Astronomical Signal Satellite (ASTRO-SIG-1)</option>
+                                        <option value="25544">ISS (ZARYA) - Space Station</option>
+                                        <option value="20580">HST - Hubble Space Telescope</option>
+                                        <option value="44713">STARLINK-1007 - Communication Satellite</option>
+                                        <option value="33591">NOAA 19 - Weather Satellite</option>
+                                    </select>
+                                    <button class="btn btn-sm btn-outline" id="btn-reset-map">
+                                        <i class="fa-solid fa-crosshairs"></i> RE-CENTER
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body map-container-box">
+                                <div id="map-view" style="display: none;"></div>
+                                <div id="globe-3d-view"></div>
+                                
+                                <div class="sat-overlay-card" id="sat-overlay">
+                                    <div class="overlay-header">
+                                        <span class="sat-badge" id="overlay-sat-id">SAT-88001</span>
+                                        <h4 id="overlay-sat-name">Emergency Response Satellite (ERS-1)</h4>
+                                        <span class="tag live-tag">TRACKING</span>
+                                    </div>
+                                    <div class="overlay-grid">
+                                        <div class="metric"><span class="label">ALTITUDE</span><span class="value cyan" id="overlay-alt">520.00 km</span></div>
+                                        <div class="metric"><span class="label">VELOCITY</span><span class="value green" id="overlay-vel">7.61 km/s</span></div>
+                                        <div class="metric"><span class="label">LATITUDE</span><span class="value" id="overlay-lat">51.64° N</span></div>
+                                        <div class="metric"><span class="label">LONGITUDE</span><span class="value" id="overlay-lng">128.45° E</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="right-panel">
+                            <div class="card panel-card">
+                                <div class="card-header"><h3><i class="fa-solid fa-compass-drafting"></i> ORBITAL PARAMETERS</h3></div>
+                                <div class="card-body">
+                                    <div class="metric-row"><span class="m-label">NORAD ID</span><span class="m-value" id="param-norad">88001</span></div>
+                                    <div class="metric-row"><span class="m-label">INCLINATION</span><span class="m-value" id="param-inc">97.80°</span></div>
+                                    <div class="metric-row"><span class="m-label">ECCENTRICITY</span><span class="m-value" id="param-ecc">0.000624</span></div>
+                                    <div class="metric-row"><span class="m-label">ORBIT PERIOD</span><span class="m-value" id="param-period">94.8 mins</span></div>
+                                    <div class="metric-row"><span class="m-label">EPOCH DATE</span><span class="m-value text-sm" id="param-epoch">2026-08-18 UTC</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card panel-card" id="debris-radar-widget"></div>
+
+                            <div class="card panel-card">
+                                <div class="card-header">
+                                    <h3><i class="fa-solid fa-bolt-lightning"></i> NOAA SPACE WEATHER</h3>
+                                    <span class="badge badge-success">ONLINE</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="weather-summary-grid">
+                                        <div class="weather-box"><span class="w-title">K-INDEX</span><span class="w-val green" id="summary-kp">Kp 2.33</span><span class="w-sub">QUIET</span></div>
+                                        <div class="weather-box"><span class="w-title">SOLAR WIND</span><span class="w-val cyan" id="summary-wind">412 km/s</span><span class="w-sub">NORMAL</span></div>
+                                        <div class="weather-box"><span class="w-title">X-RAY FLUX</span><span class="w-val yellow" id="summary-xray">C-CLASS</span><span class="w-sub">MODERATE</span></div>
+                                        <div class="weather-box"><span class="w-title">PROTON FLUX</span><span class="w-val green" id="summary-proton">NOMINAL</span><span class="w-sub">NO STORM</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card panel-card" id="launch-weather-card">
+                                <div class="card-header flex-between">
+                                    <h3><i class="fa-solid fa-cloud-sun orange"></i> LAUNCH SITE WEATHER</h3>
+                                    <span class="badge badge-success" id="weather-safety-badge">OPTIMAL</span>
+                                </div>
+                                <div class="card-body flex-col gap-xs">
+                                    <div class="flex-between margin-bottom-xs">
+                                        <span class="m-label" style="font-size: 0.65rem;">GROUND STATION / SITE</span>
+                                        <select id="launch-site-select" class="custom-input" style="padding: 2px 6px; font-size: 0.7rem; background: #080D1A; border: 1px solid var(--border-color); color: var(--brand-orange-bright); border-radius: 4px;" onchange="AppController.loadLaunchSiteWeather()">
+                                            <option value="28.3968,-80.6057,Cape Canaveral SFS">Cape Canaveral SFS (USA)</option>
+                                            <option value="13.7199,80.2304,ISRO Sriharikota">ISRO Sriharikota (India)</option>
+                                            <option value="45.9650,63.3050,Baikonur Cosmodrome">Baikonur Cosmodrome</option>
+                                            <option value="34.7420,-120.5724,Vandenberg SFB">Vandenberg SFB (USA)</option>
+                                        </select>
+                                    </div>
+                                    <div class="weather-summary-grid">
+                                        <div class="weather-box"><span class="w-title">TEMP</span><span class="w-val orange" id="w-temp">24.5°C</span><span class="w-sub" id="w-cond">Clear</span></div>
+                                        <div class="weather-box"><span class="w-title">WIND</span><span class="w-val cyan" id="w-wind">14 km/h</span><span class="w-sub" id="w-source">Open-Meteo</span></div>
+                                        <div class="weather-box"><span class="w-title">HUMIDITY</span><span class="w-val green" id="w-humidity">64%</span><span class="w-sub">Nominal</span></div>
+                                        <div class="weather-box"><span class="w-title">PRESSURE</span><span class="w-val yellow" id="w-pressure">1013 hPa</span><span class="w-sub">Standard</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. ORBIT INTELLIGENCE TAB -->
+                <section class="tab-content" id="tab-orbit-intelligence">
+                    <div class="grid-orbit-stitch">
+                        <div class="card orbit-projection-card">
+                            <div class="card-header">
+                                <h3>VIS-01 // ORBITAL PROJECTION</h3>
+                                <div class="view-toggle-group">
+                                    <button class="btn btn-sm btn-outline">LEO</button>
+                                    <button class="btn btn-sm btn-primary active-view">LIVE</button>
+                                </div>
+                            </div>
+                            <div class="card-body projection-canvas-box">
+                                <canvas id="orbit-projection-canvas"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="right-stitch-panel">
+                            <div class="card telemetry-stitch-card">
+                                <div class="card-header"><h3>PRIMARY TELEMETRY</h3></div>
+                                <div class="card-body">
+                                    <div class="telemetry-grid-stitch">
+                                        <div class="t-item"><span class="t-lbl">ALTITUDE</span><span class="t-val" id="st-alt">520.0 km</span><div class="progress-bar"><div class="progress-fill orange" style="width: 75%;"></div></div></div>
+                                        <div class="t-item"><span class="t-lbl">VELOCITY</span><span class="t-val" id="st-vel">7.61 km/s</span><div class="progress-bar"><div class="progress-fill orange" style="width: 82%;"></div></div></div>
+                                        <div class="t-item"><span class="t-lbl">INCLINATION</span><span class="t-val" id="st-inc">97.8°</span><span class="t-sub green"><i class="fa-solid fa-circle"></i> NOMINAL</span></div>
+                                        <div class="t-item"><span class="t-lbl">ORBIT PERIOD</span><span class="t-val" id="st-period">94.8 min</span><span class="t-sub green"><i class="fa-solid fa-circle"></i> NOMINAL</span></div>
+                                    </div>
+
+                                    <div class="pos-footer-box margin-top-md">
+                                        <span class="t-lbl">CURRENT POSITION (LAT/LONG)</span>
+                                        <span class="t-val-lg cyan" id="st-pos">34.0522° N 118.2437° W</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card next-pass-stitch-card">
+                                <div class="card-header"><h3>NEXT PASS EVENTS</h3></div>
+                                <div class="card-body">
+                                    <div class="pass-list-stitch">
+                                        <div class="pass-item">
+                                            <div class="p-main"><span class="p-dot green"></span><div class="p-title"><strong>AOS: GS-VANDENBERG</strong><span class="p-timer">T- 00:14:22</span></div></div>
+                                            <div class="p-meta"><span>EL: <strong>42°</strong></span><span>DUR: <strong>8m 12s</strong></span></div>
+                                        </div>
+
+                                        <div class="pass-item">
+                                            <div class="p-main"><span class="p-dot green"></span><div class="p-title"><strong>AOS: GS-SVALBARD</strong><span class="p-timer">T- 01:22:45</span></div></div>
+                                            <div class="p-meta"><span>EL: <strong>81°</strong></span><span>DUR: <strong>11m 04s</strong></span></div>
+                                        </div>
+
+                                        <div class="pass-item">
+                                            <div class="p-main"><span class="p-dot green"></span><div class="p-title"><strong>AOS: GS-MCMURDO</strong><span class="p-timer">T- 02:10:18</span></div></div>
+                                            <div class="p-meta"><span>EL: <strong>18°</strong></span><span>DUR: <strong>4m 30s</strong></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. TELEMETRY TAB -->
+                <section class="tab-content" id="tab-telemetry">
+                    <div class="telemetry-page-layout">
+                        <div class="card full-width">
+                            <div class="card-header flex-between">
+                                <h3><i class="fa-solid fa-microchip cyan"></i> SATELLITE HARDWARE & SUBSYSTEM TELEMETRY METRICS</h3>
+                                <span class="badge badge-success">HEALTH: NOMINAL (99.4%)</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="hardware-gauges-grid">
+                                    <div class="gauge-card">
+                                        <div class="g-header"><i class="fa-solid fa-battery-three-quarters green"></i><span>POWER SUBSYSTEM</span></div>
+                                        <div class="g-val-box"><span class="g-number green">98.4%</span><span class="g-sub">Solar Panels Output: 120 kW</span></div>
+                                        <div class="progress-bar"><div class="progress-fill green" style="width: 98%;"></div></div>
+                                    </div>
+
+                                    <div class="gauge-card">
+                                        <div class="g-header"><i class="fa-solid fa-temperature-three-quarters orange"></i><span>THERMAL CONTROL</span></div>
+                                        <div class="g-val-box"><span class="g-number orange">21.5°C</span><span class="g-sub">Radiator Pressure: 4.2 bar</span></div>
+                                        <div class="progress-bar"><div class="progress-fill orange" style="width: 65%;"></div></div>
+                                    </div>
+
+                                    <div class="gauge-card">
+                                        <div class="g-header"><i class="fa-solid fa-signal yellow"></i><span>TT&C COMMUNICATIONS</span></div>
+                                        <div class="g-val-box"><span class="g-number yellow">-68 dBm</span><span class="g-sub">Downlink Speed: 300 Mbps</span></div>
+                                        <div class="progress-bar"><div class="progress-fill yellow" style="width: 88%;"></div></div>
+                                    </div>
+
+                                    <div class="gauge-card">
+                                        <div class="g-header"><i class="fa-solid fa-compass orange"></i><span>ATTITUDE (ADCS)</span></div>
+                                        <div class="g-val-box"><span class="g-number green">STABILIZED</span><span class="g-sub">Gyro & Sun Sensors Active</span></div>
+                                        <div class="progress-bar"><div class="progress-fill green" style="width: 100%;"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card full-width" id="astronauts-widget"></div>
+
+                        <div class="grid-telemetry-bottom">
+                            <div class="card">
+                                <div class="card-header flex-between">
+                                    <h3><i class="fa-solid fa-network-wired cyan"></i> LIVE DATA SOURCES & PIPELINE CONNECTORS</h3>
+                                    <span class="badge badge-info">PROXIED ENDPOINTS</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="feed-status-list">
+                                        <div class="feed-item">
+                                            <div class="feed-info"><span class="f-name">CelesTrak Orbital Data (GP/TLE)</span><span class="f-url">Endpoint: /api/celestrak?noradId=25544</span></div>
+                                            <div class="feed-meta"><span class="badge badge-success">ONLINE</span><span class="f-latency">12ms</span></div>
+                                        </div>
+
+                                        <div class="feed-item">
+                                            <div class="feed-info"><span class="f-name">NOAA Space Weather Prediction Center</span><span class="f-url">Endpoint: /api/noaa/kp</span></div>
+                                            <div class="feed-meta"><span class="badge badge-success">ONLINE</span><span class="f-latency">18ms</span></div>
+                                        </div>
+
+                                        <div class="feed-item">
+                                            <div class="feed-info"><span class="f-name">NASA DONKI Solar Flare Events</span><span class="f-url">Endpoint: /api/donki/flares</span></div>
+                                            <div class="feed-meta"><span class="badge badge-success">ONLINE</span><span class="f-latency">24ms</span></div>
+                                        </div>
+
+                                        <div class="feed-item">
+                                            <div class="feed-info"><span class="f-name">Space-Track Official Catalog API</span><span class="f-url">Endpoint: /api/spacetrack/query?noradId=25544</span></div>
+                                            <div class="feed-meta"><span class="badge badge-warning" id="spacetrack-feed-status">STANDBY</span><span class="f-latency" id="spacetrack-feed-latency">--</span></div>
+                                        </div>
+
+                                        <div class="feed-item">
+                                            <div class="feed-info"><span class="f-name">Open-Meteo Launch Weather API</span><span class="f-url">Endpoint: /api/weather?lat=28.39&lon=-80.60</span></div>
+                                            <div class="feed-meta"><span class="badge badge-success">ONLINE</span><span class="f-latency">15ms</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header flex-between">
+                                    <h3><i class="fa-solid fa-database cyan"></i> PERSISTENT TELEMETRY LOGS (space_db.json)</h3>
+                                    <span class="badge badge-live">LIVE STORE</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="data-table" id="db-history-table">
+                                            <thead>
+                                                <tr><th>TIMESTAMP</th><th>NORAD ID</th><th>OBJECT NAME</th><th>STATUS</th></tr>
+                                            </thead>
+                                            <tbody id="db-history-tbody"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. DATA SOURCES TAB -->
+                <section class="tab-content" id="tab-donki-events">
+                    <div class="data-sources-page-layout">
+                        <div class="sources-grid-stitch">
+                            <div class="card source-card-stitch active-source" id="scard-orb" onclick="AppController.selectSource('ORB-01')">
+                                <div class="scard-header flex-between">
+                                    <h3><i class="fa-solid fa-globe cyan"></i> ORBITAL DATA</h3>
+                                    <span class="status-pill online">• ONLINE</span>
+                                </div>
+                                <div class="scard-body">
+                                    <div class="scard-meta-row">
+                                        <div class="meta-col"><span class="lbl">TYPE</span><span class="val">Public/Demo</span></div>
+                                        <div class="meta-col"><span class="lbl">QUALITY</span><span class="val">High</span></div>
+                                    </div>
+                                    <div class="scard-time-row">
+                                        <span class="lbl">LAST UPDATE</span>
+                                        <span class="val mono" id="scard-time-orb">2026-08-18T08:42:11Z</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card source-card-stitch" id="scard-sw" onclick="AppController.selectSource('SW-02')">
+                                <div class="scard-header flex-between">
+                                    <h3><i class="fa-solid fa-sun yellow"></i> SPACE WEATHER</h3>
+                                    <span class="status-pill online">• ONLINE</span>
+                                </div>
+                                <div class="scard-body">
+                                    <div class="scard-meta-row">
+                                        <div class="meta-col"><span class="lbl">TYPE</span><span class="val">Public/Demo</span></div>
+                                        <div class="meta-col"><span class="lbl">QUALITY</span><span class="val">Moderate</span></div>
+                                    </div>
+                                    <div class="scard-time-row">
+                                        <span class="lbl">LAST UPDATE</span>
+                                        <span class="val mono" id="scard-time-sw">2026-08-18T08:35:00Z</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card source-card-stitch" id="scard-eo" onclick="AppController.selectSource('EO-03')">
+                                <div class="scard-header flex-between">
+                                    <h3><i class="fa-solid fa-image green"></i> EARTH OBS.</h3>
+                                    <span class="status-pill degraded">• DEGRADED</span>
+                                </div>
+                                <div class="scard-body">
+                                    <div class="scard-meta-row">
+                                        <div class="meta-col"><span class="lbl">TYPE</span><span class="val">Demo Feed</span></div>
+                                        <div class="meta-col"><span class="lbl">QUALITY</span><span class="val orange">Simulated</span></div>
+                                    </div>
+                                    <div class="scard-time-row">
+                                        <span class="lbl">LAST UPDATE</span>
+                                        <span class="val mono" id="scard-time-eo">2026-08-18T08:12:44Z</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card source-card-stitch" id="scard-tel" onclick="AppController.selectSource('TEL-04')">
+                                <div class="scard-header flex-between">
+                                    <h3><i class="fa-solid fa-satellite cyan"></i> SAT TELEMETRY</h3>
+                                    <span class="status-pill online">• ONLINE</span>
+                                </div>
+                                <div class="scard-body">
+                                    <div class="scard-meta-row">
+                                        <div class="meta-col"><span class="lbl">TYPE</span><span class="val">Synthetic</span></div>
+                                        <div class="meta-col"><span class="lbl">QUALITY</span><span class="val">High</span></div>
+                                    </div>
+                                    <div class="scard-time-row">
+                                        <span class="lbl">LAST UPDATE</span>
+                                        <span class="val mono" id="scard-time-tel">2026-08-18T08:45:02Z</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card source-details-panel">
+                            <div class="card-header">
+                                <h3 id="sd-header-id">SOURCE DETAILS: ORB-01</h3>
+                            </div>
+                            <div class="card-body flex-col gap-md">
+                                <div>
+                                    <h2 class="sd-title" id="sd-title">ORBITAL DATA</h2>
+                                    <p class="sd-desc" id="sd-desc">Aggregated TLE feed from public space tracking catalog.</p>
+                                </div>
+
+                                <div class="url-box-container">
+                                    <span class="lbl">ENDPOINT URL</span>
+                                    <div class="url-input-box">
+                                        <input type="text" readonly id="sd-url" value="wss://api.antellay.space/v1/orb-feed" class="url-text" />
+                                        <button class="btn-copy-url" onclick="AppController.copySourceUrl()"><i class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="sd-metrics-row">
+                                    <div class="sd-m-col"><span class="lbl">LATENCY</span><span class="val" id="sd-latency">124ms</span></div>
+                                    <div class="sd-m-col"><span class="lbl">PACKET LOSS</span><span class="val" id="sd-loss">0.02%</span></div>
+                                </div>
+
+                                <div class="chart-1h-box">
+                                    <span class="lbl">METRICS (1H) THROUGHPUT</span>
+                                    <div class="bar-chart-1h">
+                                        <div class="b-bar" style="height: 40%;"></div>
+                                        <div class="b-bar" style="height: 60%;"></div>
+                                        <div class="b-bar" style="height: 45%;"></div>
+                                        <div class="b-bar" style="height: 75%;"></div>
+                                        <div class="b-bar" style="height: 65%;"></div>
+                                        <div class="b-bar" style="height: 90%;"></div>
+                                        <div class="b-bar" style="height: 80%;"></div>
+                                        <div class="b-bar" style="height: 100%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="actions-stitch-box margin-top-md">
+                                    <span class="lbl">ACTIONS</span>
+                                    <div class="action-btn-row">
+                                        <button class="btn btn-sm btn-outline" id="btn-pause-feed" onclick="AppController.pauseFeed()"><i class="fa-solid fa-pause"></i> PAUSE FEED</button>
+                                        <button class="btn btn-sm btn-outline" id="btn-reconnect-feed" onclick="AppController.reconnectFeed()"><i class="fa-solid fa-rotate"></i> RECONNECT</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline btn-danger-outline margin-top-xs" onclick="AppController.viewLivePayload()">
+                                        <i class="fa-solid fa-eye"></i> VIEW LIVE DATA PAYLOAD
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. WORLD MODEL ARCHITECTURE TAB (WITH ANTELLAY SPACEOS CORE PILLARS FROM LIVE WEBSITE) -->
+                <section class="tab-content" id="tab-world-model">
+                    <div class="world-model-wrapper">
+                        <div class="card architecture-banner">
+                            <div class="card-body flex-between">
+                                <div>
+                                    <h2 class="arch-title">ANTELLAY SPACEOS</h2>
+                                    <p class="arch-subtitle">Building the AI Operating System for the Space Economy — <strong>Modular Architecture</strong></p>
+                                    <p class="arch-desc">Connecting Emergency Response, VHF Marine & Aviation, and Astronomical Signal satellites into a unified operating layer.</p>
+                                </div>
+                                <div class="arch-badge-box">
+                                    <span class="badge badge-warning">MVP / UNDER DEVELOPMENT</span>
+                                    <span class="arch-subtag">Public • Demo • Synthetic Data</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ANTELLAY SPACEOS CORE PILLARS FROM LIVE WEBSITE -->
+                        <div class="card full-width">
+                            <div class="card-header">
+                                <h3><i class="fa-solid fa-shield-halved cyan"></i> ANTELLAY SPACEOS CORE PILLARS & ARCHITECTURE</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="hardware-gauges-grid">
+                                    <div class="gauge-card">
+                                        <div class="g-header"><i class="fa-solid fa-brain orange"></i><span>AI FIRST</span></div>
+                                        <div class="g-val-box"><span class="g-number orange">CORE</span><span class="g-sub">Intelligence at the core of all operations</span></div>
+                                    </div>
+
+                                    <div class="gauge-card">
+                                        <div class="g-header"><i class="fa-solid fa-satellite green"></i><span>SATELLITE INTELLIGENCE</span></div>
+                                        <div class="g-val-box"><span class="g-number green">REAL-TIME</span><span class="g-sub">Real-time space insights & orbital telemetry</span></div>
+                                    </div>
+
+                                    <div class="gauge-card">
+                                        <div class="g-header"><i class="fa-solid fa-lock yellow"></i><span>ENTERPRISE SECURITY</span></div>
+                                        <div class="g-val-box"><span class="g-number yellow">MILITARY-GRADE</span><span class="g-sub">Military-grade protection & encryption</span></div>
+                                    </div>
+
+                                    <div class="gauge-card">
+                                        <div class="g-header"><i class="fa-solid fa-server cyan"></i><span>GLOBAL INFRASTRUCTURE</span></div>
+                                        <div class="g-val-box"><span class="g-number green">SCALABLE</span><span class="g-sub">Elastic cloud built for reliability & scale</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid-pipeline">
+                            <div class="card pipeline-flow-card">
+                                <div class="card-header"><h3><i class="fa-solid fa-diagram-next"></i> FOUNDATIONAL DATA PIPELINE</h3></div>
+                                <div class="card-body pipeline-canvas">
+                                    <div class="pipeline-column sources">
+                                        <div class="pipe-node active-node"><span class="node-title">ORBITAL DATA</span><span class="node-sub">Public / Demo (CelesTrak)</span><span class="node-status-dot green"></span></div>
+                                        <div class="pipe-node active-node"><span class="node-title">SPACE WEATHER</span><span class="node-sub">Public / Demo (NOAA SWPC)</span><span class="node-status-dot green"></span></div>
+                                        <div class="pipe-node active-node"><span class="node-title">EARTH OBSERVATION</span><span class="node-sub">Demo Feed (USGS Landsat)</span><span class="node-status-dot green"></span></div>
+                                    </div>
+
+                                    <div class="pipe-arrow-col"><i class="fa-solid fa-arrow-right-long pulse-arrow"></i></div>
+
+                                    <div class="pipeline-column connectors">
+                                        <div class="pipe-node connector-node"><span class="node-title">DATA CONNECTORS</span><span class="node-sub">ingest / route</span></div>
+                                    </div>
+
+                                    <div class="pipe-arrow-col"><i class="fa-solid fa-arrow-right-long pulse-arrow"></i></div>
+
+                                    <div class="pipeline-column normalization">
+                                        <div class="pipe-node norm-node"><span class="node-title">DATA NORMALIZATION</span><span class="node-sub">common schema</span></div>
+                                    </div>
+
+                                    <div class="pipe-arrow-col"><i class="fa-solid fa-arrow-right-long pulse-arrow"></i></div>
+
+                                    <div class="pipeline-column core-model">
+                                        <div class="world-model-core-box">
+                                            <span class="core-header">SATELLITE & ORBIT</span>
+                                            <h3 class="core-title">WORLD MODEL</h3>
+                                            <span class="core-badge">MVP CORE</span>
+                                            <div class="alpha-branches">
+                                                <span class="alpha-label">ALPHA-1</span>
+                                                <div class="branch-nodes"><span class="b-chip">Orbit</span><span class="b-chip">Telemetry</span><span class="b-chip">Environment</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="right-perspectives">
+                                <div class="card perspective-card">
+                                    <div class="card-header"><h3><i class="fa-solid fa-location-crosshairs"></i> CURRENT STATE</h3></div>
+                                    <div class="card-body">
+                                        <span class="p-question">"Where is the asset?"</span>
+                                        <div class="p-output-box">
+                                            <p>Satellite: <strong style="color: var(--brand-orange-bright);" id="wm-asset-id">NORAD-88001 (ERS-1)</strong></p>
+                                            <p>Coordinates: <strong id="wm-pos">Lat 51.64° N, Lon 128.45° E</strong></p>
+                                            <p>Altitude & Speed: <strong style="color: var(--accent-green);" id="wm-alt">520.00 km @ 7.61 km/s</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card perspective-card">
+                                    <div class="card-header"><h3><i class="fa-solid fa-eye"></i> CONTEXT</h3></div>
+                                    <div class="card-body">
+                                        <span class="p-question">"What surrounds it?"</span>
+                                        <div class="p-output-box">
+                                            <p>Geomagnetic Status: <strong style="color: var(--accent-green);" id="wm-kp">Kp 2.33 (Quiet Field)</strong></p>
+                                            <p>Solar Wind Stream: <strong style="color: var(--brand-orange-bright);" id="wm-wind">412 km/s (Normal)</strong></p>
+                                            <p>Radiation Level: <strong style="color: var(--accent-yellow);">Moderate C-Class Flares</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card perspective-card">
+                                    <div class="card-header"><h3><i class="fa-solid fa-network-wired"></i> UNIFIED MODEL</h3></div>
+                                    <div class="card-body">
+                                        <span class="p-question">"How does the data connect?"</span>
+                                        <div class="unified-visual-card">
+                                            <div class="conn-item"><i class="fa-solid fa-circle-nodes cyan"></i><span><strong>Orbit:</strong> Inclination <span id="u-inc">97.80°</span> • Period <span id="u-period">94.8 mins</span></span></div>
+                                            <div class="conn-item"><i class="fa-solid fa-battery-three-quarters green"></i><span><strong>Telemetry:</strong> Battery <span id="u-bat">94%</span> • Temp <span id="u-temp">22.4°C</span></span></div>
+                                            <div class="conn-item"><i class="fa-solid fa-sun yellow"></i><span><strong>Environment:</strong> Wind <span id="u-wind">4.2 p/cm³</span> • Risk <span id="u-risk">Low</span></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card core-capability-card">
+                            <div class="card-header"><h3><i class="fa-solid fa-microchip"></i> ORBIT INTELLIGENCE — CORE MVP CAPABILITY</h3></div>
+                            <div class="card-body">
+                                <div class="capabilities-row">
+                                    <span class="cap-pill">Position</span><span class="cap-pill">Altitude</span><span class="cap-pill">Velocity</span><span class="cap-pill">Inclination</span><span class="cap-pill">Ground Track</span><span class="cap-pill">Next Pass</span>
+                                </div>
+                                <p class="cap-footer-text">The system first establishes reliable orbital context before adding higher-level intelligence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- API KEYS & CONFIGURATION MODAL -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-sliders"></i> API KEYS & BACKEND CONFIGURATION</h3>
+                <button class="btn-close-modal" id="btn-close-settings"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label><i class="fa-solid fa-key"></i> NASA DONKI API KEY</label>
+                    <input type="text" id="input-nasa-key" class="custom-input" placeholder="e.g. DEMO_KEY or your NASA API key" />
+                    <span class="input-help">Get free key from api.nasa.gov</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user-lock"></i> SPACE-TRACK USERNAME</label>
+                        <input type="text" id="input-spacetrack-user" class="custom-input" placeholder="User email" />
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-lock"></i> SPACE-TRACK PASSWORD</label>
+                        <input type="password" id="input-spacetrack-pass" class="custom-input" placeholder="Password" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-shield"></i> USGS EARTHEXPLORER M2M TOKEN</label>
+                    <input type="text" id="input-usgs-key" class="custom-input" placeholder="USGS API Token" />
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-cloud-sun"></i> TERRESTRIAL & LAUNCH WEATHER API KEY</label>
+                    <input type="text" id="input-weather-key" class="custom-input" placeholder="e.g. OpenWeatherMap API Key or DEMO_WEATHER_KEY" />
+                    <span class="input-help">Powers live launch station meteorological telemetry</span>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-link"></i> CELESTRAK ENDPOINT URL</label>
+                    <input type="text" id="input-celestrak-url" class="custom-input" value="https://celestrak.org/NORAD/elements/gp.php" />
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-link"></i> NOAA SWPC ENDPOINT URL</label>
+                    <input type="text" id="input-noaa-url" class="custom-input" value="https://services.swpc.noaa.gov/json" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="modal-status-text" id="modal-status-msg"></span>
+                <button class="btn btn-primary" id="btn-save-settings">
+                    <i class="fa-solid fa-floppy-disk"></i> SAVE TO DATABASE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVE DATA PAYLOAD INSPECTOR MODAL -->
+    <div class="modal-overlay" id="payload-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="payload-modal-title"><i class="fa-solid fa-code cyan"></i> LIVE DATA PAYLOAD ACCESS</h3>
+                <button class="btn-close-modal" onclick="document.getElementById('payload-modal').classList.remove('active')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Real-time normalized JSON stream from upstream server proxy:</p>
+                <div style="background: #02050B; border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem; max-height: 300px; overflow-y: auto;">
+                    <pre id="payload-code-box" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--brand-orange-bright); white-space: pre-wrap;"></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-green);">HTTP 200 OK • Stream Active</span>
+                <button class="btn btn-primary" onclick="document.getElementById('payload-modal').classList.remove('active')">CLOSE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/satellite.js/5.0.0/satellite.min.js"></script>
+
+    <!-- Application JavaScript Modules -->
+    <script src="js/starfield.js"></script>
+    <script src="js/sfx.js"></script>
+    <script src="js/globe3d.js"></script>
+    <script src="js/debris.js"></script>
+    <script src="js/astronauts.js"></script>
+    <script src="js/launches.js"></script>
+    <script src="js/api/celestrak.js"></script>
+    <script src="js/api/noaa.js"></script>
+    <script src="js/api/donki.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnLogout = document.getElementById('btn-logout');
+            if (btnLogout) {
+                btnLogout.addEventListener('click', () => {
+                    if (typeof SFXEngine !== 'undefined') {
+                        SFXEngine.playAlert();
+                        SFXEngine.speak("Log out sequence initiated. Returning to portal.");
+                    }
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1200);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Local environment variables (Contains API keys and passwords)
+.env
+
+# Dependencies
+node_modules/
+
+# Local backups and temporary source folders
+downloaded_src/
+temp_downloaded_code/
+
+# Log files
+*.log

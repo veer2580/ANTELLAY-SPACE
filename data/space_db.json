@@ -1,0 +1,50 @@
+{
+  "settings": {
+    "nasa_api_key": "akhqaqnZgVSXXEnCAHdyqfcMEl8m8DYCYMsPGOKt",
+    "spacetrack_user": "Ronakagarwaloffical@gmail.com",
+    "spacetrack_pass": "Ronakagarwaloffical",
+    "usgs_api_key": "USGS_M2M_TOKEN_AUTHENTICATED",
+    "celestrak_endpoint": "https://celestrak.org/NORAD/elements/gp.php",
+    "noaa_endpoint": "https://services.swpc.noaa.gov/json",
+    "weather_api_key": "DEMO_WEATHER_KEY"
+  },
+  "telemetry_logs": [
+    {
+      "timestamp": "2026-08-18T17:12:00.000Z",
+      "noradId": "25544",
+      "name": "ISS (ZARYA)",
+      "epoch": "2026-08-18T12:00:00.000Z",
+      "meanMotion": 15.498,
+      "inclination": 51.6418
+    },
+    {
+      "timestamp": "2026-08-18T17:10:00.000Z",
+      "noradId": "20580",
+      "name": "HST (HUBBLE)",
+      "epoch": "2026-08-18T11:45:00.000Z",
+      "meanMotion": 15.12,
+      "inclination": 28.4732
+    },
+    {
+      "timestamp": "2026-08-18T17:08:00.000Z",
+      "noradId": "44713",
+      "name": "STARLINK-1007",
+      "epoch": "2026-08-18T11:30:00.000Z",
+      "meanMotion": 15.05,
+      "inclination": 53.054
+    }
+  ],
+  "weather_history": [
+    {
+      "timestamp": "2026-08-18T17:12:00.000Z",
+      "type": "Kp-Index",
+      "value": 2.33
+    },
+    {
+      "timestamp": "2026-08-19T04:39:44.635Z",
+      "type": "Kp-Index",
+      "value": 3
+    }
+  ],
+  "donki_events_cache": []
+}

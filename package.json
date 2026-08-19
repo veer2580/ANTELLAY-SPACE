@@ -1,0 +1,27 @@
+{
+  "name": "antally-space",
+  "version": "1.0.0",
+  "description": "Antally Space Operations - Mission Control & Orbital Intelligence Platform with dotenv API configuration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "space",
+    "satellites",
+    "celestrak",
+    "noaa",
+    "nasa",
+    "donki"
+  ],
+  "author": "Antally Space",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2",
+    "node-fetch": "^3.3.2"
+  }
+}

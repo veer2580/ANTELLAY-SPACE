@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANTELLAY — Space Intelligence</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#020507;color:#e9edf0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{
+  background:
+    radial-gradient(circle at 83% 12%,rgba(255,112,38,.17),transparent 16%),
+    radial-gradient(circle at 50% 46%,rgba(25,65,86,.13),transparent 30%),
+    linear-gradient(180deg,#030609,#071018 53%,#020609);
+}
+body{min-width:320px}
+.os-page{
+  width:100%;
+  max-width:1180px;
+  margin:auto;
+  min-height:100vh;
+  position:relative;
+  padding-top:70px;
+}
+.os-page:before{
+  content:"";position:absolute;
+  inset:-40px calc(50% - 50vw - 90px);
+  background:url('assets/images/ChatGPT Image Aug 18, 2026, 09_59_21 PM.png') center center / cover no-repeat;
+  will-change:transform;
+  animation:heroShrink 14s ease-in-out infinite alternate;
+  z-index:0;
+}
+@keyframes heroShrink{
+  from{transform:scale(1.08) translate3d(0,0,0)}
+  to{transform:scale(1) translate3d(-60px,25px,0)}
+}
+@keyframes heroZoom{
+  from{transform:scale(1.06)}
+  to{transform:scale(1)}
+}
+.os-page > *{position:relative;z-index:2}
+.os-header{text-align:center;padding:64px 20px 24px;position:relative;z-index:2}
+.kicker{
+  color:#ff7625;font-size:12px;letter-spacing:4px;margin-bottom:18px
+}
+h1{
+  margin:0;font-size:clamp(24px,5.2vw,69px);font-weight:300;
+  letter-spacing:clamp(2px,.8vw,6px);line-height:1.05
+}
+.tagline{margin:17px 0 0;color:#b8c0c6;font-size:17px;font-weight:300}
+.diagram{
+  position:relative;
+  width:min(1080px,94%);
+  margin:10px auto 0;
+  min-height:1180px;
+  display:grid;
+  grid-template-columns:245px minmax(0,1fr) 310px;
+  column-gap:55px;
+  z-index:2;
+}
+.left{position:relative;z-index:4;padding-top:18px;display:flex;flex-direction:column;gap:13px}
+.source{
+  height:143px;border:1px solid #394751;border-radius:9px;
+  background:linear-gradient(145deg,#0a141e,#050b10);
+  padding:15px;position:relative;box-shadow:0 7px 20px #0005
+}
+.source h3{font-size:13px;line-height:1.15;font-weight:500;margin:0 0 6px 48px;letter-spacing:.4px}
+.source small{font-size:10px;color:#aeb8be;margin-left:48px}
+.sicon{
+  position:absolute;left:15px;top:15px;width:34px;height:34px;
+  display:grid;place-items:center;font-size:25px;color:#dfe5e8
+}
+.preview{
+  position:absolute;left:15px;right:15px;bottom:13px;height:55px;
+  border:1px solid #263640;border-radius:4px;
+  background:linear-gradient(#0a141d,#050b10);overflow:hidden
+}
+.preview:before{
+  content:"";position:absolute;left:10px;right:10px;top:10px;height:1px;
+  background:#273843;box-shadow:0 15px #273843,0 30px #273843
+}
+.preview svg{position:absolute;inset:0;width:100%;height:100%}
+.preview img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  z-index:2;display:block
+}
+.source.has-img{height:170px}
+.source.has-img .preview{
+  left:0;right:0;top:0;bottom:0;height:auto;
+  border:1px solid #3a4c58;border-radius:9px;
+  box-shadow:0 4px 14px #0006
+}
+.source.has-img .preview:before{
+  content:"";position:absolute;left:0;right:0;top:0;bottom:0;height:auto;
+  background:linear-gradient(180deg,rgba(2,5,7,.82) 0%,rgba(2,5,7,.25) 55%,transparent 100%);
+  box-shadow:none;z-index:3
+}
+.source.has-img .preview img{border-radius:9px}
+.source.has-img .sicon{color:#ff7625;filter:drop-shadow(0 0 6px rgba(255,118,37,.8))}
+.center{position:relative;z-index:4;padding-top:20px}
+.center-label{text-align:center;color:#ff7625;font-size:12px;letter-spacing:2px;margin-bottom:11px}
+.flow{
+  width:180px;margin:auto;position:relative;z-index:4
+}
+.flow-box{
+  height:45px;margin:9px 0;border:1px solid #33444f;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-size:11px;line-height:1.2;background:linear-gradient(#0b151f,#071018)
+}
+.flow-arrow{text-align:center;color:#ff7625;font-size:17px;height:10px;line-height:10px}
+.rail{
+  position:absolute;top:13px;left:50%;transform:translateX(-50%);
+  width:250px;height:300px;border-left:1px dashed #c7cdd1;
+  border-right:1px dashed #c7cdd1;border-radius:14px;opacity:.8
+}
+.core{
+  width:247px;margin:93px auto 0;border:1px solid #8e684f;border-radius:13px;
+  padding:14px;background:linear-gradient(#09131d,#050a0f);
+  box-shadow:0 0 28px #ff76251c;position:relative;z-index:4
+}
+.logo-mark{text-align:center;font-size:49px;font-weight:200;line-height:1}
+.core-name{text-align:center;font-size:22px;letter-spacing:5px;font-weight:300;margin-top:5px}
+.core-sub{text-align:center;color:#ff7625;font-size:8px;letter-spacing:2px;margin:8px 0 14px}
+.action{
+  height:47px;margin:7px 0;border:1px solid #2b3b46;border-radius:6px;
+  background:linear-gradient(90deg,#0b1620,#071018);
+  display:flex;align-items:center;padding:0 12px;gap:11px;font-size:11px
+}
+.action i{font-style:normal;font-size:20px;width:25px;text-align:center}
+.action b{font-weight:400;flex:1}.action em{font-style:normal;color:#ff7625}
+.right{position:relative;z-index:4;padding-top:112px;text-align:center}
+.right .kicker{font-size:10px;letter-spacing:2px;margin-bottom:10px}
+.right h2{font-weight:300;font-size:18px;letter-spacing:2px;line-height:1.45}
+.earth{
+  width:300px;height:300px;margin:23px auto 0;border-radius:50%;
+  position:relative;
+  border:1px solid #365365;
+  box-shadow:inset -42px -25px 60px #000e,0 0 35px #5389aa18;
+  overflow:hidden
+}
+.earth img{
+  position:absolute;inset:0;width:100%;height:100%;
+  border-radius:50%;object-fit:cover;z-index:0;display:block
+}
+.earth:before{
+  content:"";position:absolute;inset:28px;border-radius:50%;
+  background:
+  radial-gradient(ellipse at 43% 42%,#c99845 0 1.5%,transparent 2%),
+  radial-gradient(ellipse at 58% 50%,#e3b65d 0 1%,transparent 1.7%),
+  radial-gradient(ellipse at 37% 62%,#b98a3c 0 1.3%,transparent 2%),
+  radial-gradient(ellipse at 66% 32%,#d3a14d 0 1%,transparent 1.6%);
+}
+.orbit{
+  position:absolute;inset:-24px;border:1px solid #c8824e;border-radius:50%;
+  transform:rotate(28deg) scaleY(.47)
+}
+.orbit2{inset:-47px;transform:rotate(-20deg) scaleY(.32);border-color:#aa6d45}
+.orbit3{inset:-68px;transform:rotate(12deg) scaleY(.22);border-color:#875b40}
+.sat{position:absolute;color:#e8edf0;font-size:17px;animation:satPulse 2.6s ease-in-out infinite}
+.sat.s2{animation-delay:.43s}
+.sat.s3{animation-delay:.86s}
+.sat.s4{animation-delay:1.3s}
+.sat.s5{animation-delay:1.73s}
+.sat.s6{animation-delay:2.16s}
+@keyframes satPulse{
+  0%,100%{opacity:.55;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.4)}
+}
+.earth{animation:earthFloat 7s ease-in-out infinite}
+@keyframes earthFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+.s1{left:35px;top:7px}.s2{right:22px;top:43px}.s3{left:-4px;top:142px}
+.s4{right:-2px;bottom:56px}.s5{left:59px;bottom:8px}.s6{right:57px;bottom:0}
+.intel{margin-top:60px;width:100%}
+.intel img{
+  width:100%;height:auto;display:block;
+  border:1px solid rgba(255,255,255,0.08);border-radius:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.45)
+}
+.connections{
+  position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible
+}
+.connections path{
+  fill:none;stroke:#c5ccd0;stroke-width:1.15;
+  stroke-dasharray:6 8;stroke-linecap:round;stroke-linejoin:round;opacity:.9;
+  animation:lineFlow 1.2s linear infinite
+}
+.connections .orange{
+  stroke:#ff7625;stroke-width:1.15;
+  stroke-dasharray:8 7;stroke-linecap:round;opacity:.85;
+  animation:lineFlow 1.2s linear infinite reverse
+}
+@keyframes lineFlow{
+  from{stroke-dashoffset:0}
+  to{stroke-dashoffset:-28}
+}
+.connections circle{fill:#ff7625}
+.os-footer{text-align:center;position:relative;z-index:3;padding:60px 20px 45px}
+.os-footer h2{font-weight:300;font-size:28px;letter-spacing:7px}
+.os-footer h3{font-weight:300;color:#ff7625;font-size:27px;letter-spacing:6px;margin:17px 0 0}
+.os-footer p{color:#b9c0c5;margin:28px 0;font-size:15px;letter-spacing:1px}
+@media(max-width:1020px){
+ .diagram{grid-template-columns:220px minmax(0,1fr);column-gap:35px}
+ .right{grid-column:1/-1;padding-top:50px}
+ .connections{display:none}
+ .left{grid-row:1}
+}
+@media(max-width:620px){
+ .os-page{padding-top:52px}
+ .os-header{padding-top:34px}
+ h1{font-size:clamp(18px,6vw,36px);letter-spacing:1.5px}
+ .tagline{font-size:15px}
+ .diagram{display:block;width:94%;min-height:auto}
+ .left{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+ .source.has-img{height:158px}
+ .center{padding-top:45px}.right{padding-top:65px}
+ .os-footer{padding:48px 18px 38px}
+ .os-footer h2{font-size:clamp(17px,5.4vw,28px);letter-spacing:2px}
+ .os-footer h3{font-size:clamp(15px,4.8vw,27px);letter-spacing:2px}
+ .os-footer p{font-size:13px;letter-spacing:.5px}
+ .os-page:before{animation:heroZoom 14s ease-in-out infinite alternate}
+ .earth{animation:earthFloat 9s ease-in-out infinite}
+ .sat{animation-duration:3.4s}
+}
+@media(max-width:460px){
+ .left{display:block}.source{margin-bottom:12px}
+ .earth{width:min(240px,72vw);height:min(240px,72vw)}
+ .core{width:min(247px,86vw)}
+}
+@media(max-width:400px){
+ .left{display:grid;grid-template-columns:1fr;gap:10px}
+ .source{margin-bottom:0}
+ .source.has-img{height:140px}
+ .source h3{font-size:12px}
+ .source small{font-size:9px}
+ .kicker{letter-spacing:3px}
+ .os-footer h2{font-size:16px;letter-spacing:1.5px}
+ .os-footer h3{font-size:14px;letter-spacing:1px}
+ .intel{margin-top:38px}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M24 4 6 43l18-12 18 12L24 4Z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M24 15v16M17 35l7-4 7 4" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <span><span class="brand-name">ANTELLAY</span><span class="brand-sub">SPACE</span></span>
+  </a>
+  <nav class="nav" aria-label="Primary">
+    <a href="architecture.html">Architecture</a>
+    <a href="thesis.html">Thesis</a>
+    <a href="news.html">News</a>
+    <a href="product.html">Products</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+  <a class="contact" href="login.html">Login</a>
+  <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="architecture.html">Architecture</a>
+  <a href="thesis.html">Thesis</a>
+  <a href="news.html">News</a>
+  <a href="product.html">Products</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<main>
+<div class="os-page">
+<header class="os-header">
+  <div class="kicker">THE PROBLEM</div>
+  <h1>SPACE IS FRAGMENTED.</h1>
+  <p class="tagline">Every mission runs across different systems.</p>
+</header>
+
+<section class="diagram">
+<svg class="connections" viewBox="0 0 1080 1180" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M245 141.5 C300 141.5 340 400 350 520 C360 580 380 605 384 620"/>
+  <path d="M245 324.5 C290 324.5 320 500 350 610 C365 660 378 685 384 700"/>
+  <path d="M245 507.5 C290 507.5 315 650 350 710 C365 750 378 770 384 780"/>
+  <path d="M245 690.5 C290 690.5 315 780 350 825 C365 845 378 855 384 860"/>
+  <path d="M245 873.5 C290 873.5 315 900 350 915 C365 935 378 938 384 940"/>
+  <path d="M245 1018 C290 1018 315 1010 350 1015 C365 1020 378 1025 384 1020"/>
+
+  <circle cx="245" cy="141.5" r="3"/>
+  <circle cx="245" cy="324.5" r="3"/>
+  <circle cx="245" cy="507.5" r="3"/>
+  <circle cx="245" cy="690.5" r="3"/>
+  <circle cx="245" cy="873.5" r="3"/>
+  <circle cx="245" cy="1018" r="3"/>
+
+  <circle cx="384" cy="620" r="2.5"/>
+  <circle cx="384" cy="700" r="2.5"/>
+  <circle cx="384" cy="780" r="2.5"/>
+  <circle cx="384" cy="860" r="2.5"/>
+  <circle cx="384" cy="940" r="2.5"/>
+  <circle cx="384" cy="1020" r="2.5"/>
+
+  <path class="orange" d="M631 620 C675 605 720 545 775 460"/>
+  <path class="orange" d="M631 700 C675 685 720 625 775 520"/>
+  <path class="orange" d="M631 780 C675 765 720 705 775 580"/>
+  <path class="orange" d="M631 860 C675 845 720 785 775 640"/>
+  <path class="orange" d="M631 940 C675 925 720 865 775 700"/>
+  <path class="orange intel-line" d="M631 990 C680 975 730 930 775 860"/>
+
+  <circle cx="631" cy="620" r="2.7"/>
+  <circle cx="631" cy="700" r="2.7"/>
+  <circle cx="631" cy="780" r="2.7"/>
+  <circle cx="631" cy="860" r="2.7"/>
+  <circle cx="631" cy="940" r="2.7"/>
+</svg>
+
+<section class="left">
+  <article class="source has-img"><div class="sicon">◈</div><h3>SATELLITE<br>OPERATIONS</h3><small>Telemetry</small><div class="preview"><img src="assets/images/ChatGPT Image Aug 19, 2026, 01_09_27 AM.png" alt="Satellite Operations"></div></article>
+  <article class="source has-img"><div class="sicon">◉</div><h3>EARTH<br>OBSERVATION</h3><small>EO Data</small><div class="preview"><img src="assets/images/ChatGPT Image Aug 19, 2026, 01_10_13 AM.png" alt="Earth Observation"></div></article>
+  <article class="source has-img"><div class="sicon">☼</div><h3>SPACE<br>WEATHER</h3><small>Environment</small><div class="preview"><img src="assets/images/ChatGPT Image Aug 19, 2026, 01_11_06 AM.png" alt="Space Weather"></div></article>
+  <article class="source has-img"><div class="sicon">◉</div><h3>GROUND<br>SYSTEMS</h3><small>Mission Control</small><div class="preview"><img src="assets/images/ChatGPT Image Aug 19, 2026, 01_11_45 AM.png" alt="Ground Systems"></div></article>
+  <article class="source has-img"><div class="sicon">◎</div><h3>ORBITAL<br>DATA</h3><small>Objects + Orbits</small><div class="preview"><img src="assets/images/ChatGPT Image Aug 19, 2026, 01_13_27 AM.png" alt="Orbital Data"></div></article>
+  <article class="source has-img"><div class="sicon">⚙</div><h3>MISSION<br>SOFTWARE</h3><small>Planning + Operations</small><div class="preview"><img src="assets/images/ChatGPT Image Aug 19, 2026, 01_15_11 AM.png" alt="Mission Software"></div></article>
+</section>
+
+<section class="center">
+  <div class="center-label">THE PROBLEM</div>
+  <div class="rail"></div>
+  <div class="flow">
+    <div class="flow-box">MULTIPLE SYSTEMS</div><div class="flow-arrow">↓</div>
+    <div class="flow-box">MULTIPLE<br>DATA SOURCES</div><div class="flow-arrow">↓</div>
+    <div class="flow-box">MULTIPLE<br>INTERFACES</div><div class="flow-arrow">↓</div>
+    <div class="flow-box">FRAGMENTED<br>INTELLIGENCE</div>
+  </div>
+
+  <div class="core">
+    <div class="logo-mark">Λ</div>
+    <div class="core-name">ANTELLAY</div>
+    <div class="core-sub">SPACE INTELLIGENCE OS</div>
+    <div class="action"><i>⌘</i><b>CONNECT</b><em>↓</em></div>
+    <div class="action"><i>♧</i><b>UNDERSTAND</b><em>↓</em></div>
+    <div class="action"><i>↗</i><b>PREDICT</b><em>↓</em></div>
+    <div class="action"><i>◇</i><b>SIMULATE</b><em>↓</em></div>
+    <div class="action"><i>◎</i><b>DECIDE</b></div>
+  </div>
+</section>
+
+<section class="right">
+  <div class="kicker">THE RESULT</div>
+  <h2>ONE CONNECTED<br>SPACE ENVIRONMENT</h2>
+  <div class="earth">
+    <img src="assets/images/ChatGPT Image Aug 19, 2026, 01_24_09 AM.png" alt="Connected Space">
+    <div class="orbit"></div><div class="orbit orbit2"></div><div class="orbit orbit3"></div>
+    <span class="sat s1">◆</span><span class="sat s2">◆</span><span class="sat s3">◆</span>
+    <span class="sat s4">◆</span><span class="sat s5">◆</span><span class="sat s6">◆</span>
+  </div>
+  <div class="intel">
+    <img src="assets/images/ChatGPT Image Aug 19, 2026, 01_29_21 AM.png" alt="One Intelligence Layer">
+  </div>
+</section>
+</section>
+
+<footer class="os-footer">
+  <h2>ONE SPACE ECOSYSTEM.</h2>
+  <h3>ONE INTELLIGENCE LAYER.</h3>
+  <p>Connect what already exists. Intelligence on top.</p>
+</footer>
+</div>
+</main>
+
+<footer class="page" id="contact">
+  <video class="footer-video" autoplay muted loop playsinline disablepictureinpicture src="assets/videos/WhatsApp Video 2026-08-11 at 12.12.58 PM.mp4"></video>
+  <div class="footer-top">
+    <div class="footer-center">
+      <a class="brand" href="index.html">
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 6 43l18-12 18 12L24 4Z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/><path d="M24 15v16M17 35l7-4 7 4" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+        <span><span class="brand-name">ANTELLAY</span><span class="brand-sub">SPACE</span></span>
+      </a>
+      <div class="socials">
+        <a href="https://www.linkedin.com/company/a-n-t-e-l-l-a-y-space/posts/?feedView=all" target="_blank" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Twitter">&#120143;</a>
+        <a href="#" aria-label="Mail">&#9993;</a>
+        <a href="https://www.instagram.com/antellay.tech?igsh=NDBoa3NoMjZ2Ynk3" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <a href="#contact" class="to-top" aria-label="Back to top">&#8593;</a>
+  </div>
+  <div class="copyright">&copy; 2026 ANTELLAY Tech. All Rights Reserved. A Celebso Group Company.</div>
+</footer>
+<script src="js/main.js"></script>
+<script>
+(function () {
+  function layoutConnections() {
+    var svg = document.querySelector('.connections');
+    var diagram = document.querySelector('.diagram');
+    if (!svg || !diagram) return;
+
+    if (window.innerWidth < 1021) {
+      svg.style.display = 'none';
+      return;
+    }
+    svg.style.display = 'block';
+
+    var dRect = diagram.getBoundingClientRect();
+    svg.setAttribute('viewBox', '0 0 ' + dRect.width + ' ' + dRect.height);
+
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.left .source'));
+    var core = document.querySelector('.core');
+    var earth = document.querySelector('.earth');
+    if (!cards.length || !core || !earth) return;
+
+    var coreRect = core.getBoundingClientRect();
+    var earthRect = earth.getBoundingClientRect();
+
+    var coreLeft = coreRect.left - dRect.left;
+    var coreRight = coreRect.right - dRect.left;
+    var n = cards.length;
+    var ys = [];
+    for (var i = 0; i < n; i++) {
+      ys.push(coreRect.top - dRect.top + coreRect.height * ((i + 1) / (n + 1)));
+    }
+
+    var L = [];
+    for (var i = 0; i < n; i++) {
+      var r = cards[i].getBoundingClientRect();
+      L.push({ x: r.right - dRect.left, y: r.top + r.height / 2 - dRect.top });
+    }
+
+    var gray = Array.prototype.slice.call(svg.querySelectorAll('path:not(.orange)'));
+    var orange = Array.prototype.slice.call(svg.querySelectorAll('path.orange:not(.intel-line)'));
+    var intelLine = svg.querySelector('path.intel-line');
+
+    for (var i = 0; i < n; i++) {
+      if (!gray[i]) continue;
+      var d = 'M' + L[i].x + ' ' + L[i].y +
+              ' C' + (L[i].x + 45) + ' ' + L[i].y +
+              ' ' + (coreLeft - 45) + ' ' + ys[i] +
+              ' ' + coreLeft + ' ' + ys[i];
+      gray[i].setAttribute('d', d);
+    }
+
+    var earthTop = earthRect.top - dRect.top;
+    var earthH = earthRect.height;
+    var earthLeft = earthRect.left - dRect.left + 2;
+    for (var i = 0; i < orange.length; i++) {
+      var ey = earthTop + earthH * ((i + 1) / (orange.length + 1));
+      var d = 'M' + coreRight + ' ' + ys[i] +
+              ' C' + (coreRight + 45) + ' ' + ys[i] +
+              ' ' + (earthLeft - 45) + ' ' + ey +
+              ' ' + earthLeft + ' ' + ey;
+      orange[i].setAttribute('d', d);
+    }
+
+    var intel = document.querySelector('.intel');
+    if (intelLine && intel) {
+      var iRect = intel.getBoundingClientRect();
+      var ix = iRect.left - dRect.left + 2;
+      var iy = iRect.top - dRect.top + iRect.height / 2;
+      var iCoreY = coreRect.bottom - dRect.top - 12;
+      intelLine.setAttribute('d',
+        'M' + coreRight + ' ' + iCoreY +
+        ' C' + (coreRight + 45) + ' ' + iCoreY +
+        ' ' + (ix - 45) + ' ' + iy +
+        ' ' + ix + ' ' + iy);
+    }
+
+    var circles = svg.querySelectorAll('circle');
+    for (var i = 0; i < n && circles[i]; i++) {
+      circles[i].setAttribute('cx', L[i].x);
+      circles[i].setAttribute('cy', L[i].y);
+    }
+    for (var i = 0; i < n && circles[n + i]; i++) {
+      circles[n + i].setAttribute('cx', coreLeft);
+      circles[n + i].setAttribute('cy', ys[i]);
+    }
+    for (var i = 0; i < orange.length && circles[2 * n + i]; i++) {
+      circles[2 * n + i].setAttribute('cx', coreRight);
+      circles[2 * n + i].setAttribute('cy', ys[i]);
+    }
+    for (var i = 0; i < orange.length && circles[2 * n + orange.length + i]; i++) {
+      circles[2 * n + orange.length + i].setAttribute('cx', earthLeft);
+      circles[2 * n + orange.length + i].setAttribute('cy', earthTop + earthH * ((i + 1) / (orange.length + 1)));
+    }
+  }
+
+  window.addEventListener('load', layoutConnections);
+  window.addEventListener('resize', layoutConnections);
+})();
+</script>
+</body>
+</html>
