@@ -1558,7 +1558,21 @@
  gap: 9px;
  }
       .why-card {
- padding: 15px 11px;
- }
+  padding: 15px 11px;
+  }
     }
-  
+
+    .india-flag-container {
+      position: absolute;
+      right: 0;
+      top: 18px;
+      display: flex;
+      align-items: center;
+    }
+    @media (max-width: 680px) {
+      .india-flag-container {
+        position: static;
+        margin-top: 10px;
+        justify-content: center;
+      }
+    }
