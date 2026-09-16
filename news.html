@@ -760,12 +760,65 @@ Antellay Space - News & Insights
         .copyright {
             position: relative;
             z-index: 1;
-            border-top: 1px solid rgba(154, 179, 202, .3);
+            border-top: 1px solid rgba(154, 179, 202, .25);
             padding-top: 18px;
             text-align: center;
-            color: var(--dim);
+            color: #525e70;
             font-size: 11px;
             letter-spacing: 1px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+        }
+        .copyright a,
+        .footer-link {
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color .25s ease, text-shadow .25s ease;
+            cursor: pointer;
+        }
+        .copyright a:hover,
+        .footer-link:hover {
+            color: var(--orange2, #ff9a57);
+            text-decoration: underline;
+            text-shadow: 0 0 10px rgba(255, 154, 87, 0.5);
+        }
+        .footer-legal-bar {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 10px 0 14px;
+            position: relative;
+            z-index: 2;
+        }
+        .footer-legal-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        .legal-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            color: #94A3B8;
+            font-size: 11px;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 0.4px;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(8px);
+        }
+        .legal-btn:hover {
+            color: #FFFFFF;
+            background: rgba(232, 106, 40, 0.18);
+            border-color: rgba(232, 106, 40, 0.55);
+            box-shadow: 0 0 14px rgba(232, 106, 40, 0.3);
+            transform: translateY(-1px);
         }
         .socials a:hover {
  color: var(--orange2);
@@ -1552,7 +1605,7 @@ in
 &#120143;
 </a>
                 
-<a href="#" aria-label="Mail">
+<a href="mailto:space.antellay@gmail.com" aria-label="Mail">
 &#9993;
 </a>
                 
@@ -1594,8 +1647,20 @@ SPACE
         
 </div>
         
-<div class="copyright">
-&copy; 2026 ANTELLAY Labs. All Rights Reserved. A Celebso Group Company.
+    <div class="footer-legal-bar">
+      <div class="footer-legal-links">
+        <a href="legal.html#terms" class="legal-btn">Terms &amp; Conditions</a>
+        <a href="legal.html#privacy" class="legal-btn">Privacy Policy</a>
+        <a href="legal.html#cookies" class="legal-btn">Cookie Policy</a>
+        <a href="legal.html#disclaimer" class="legal-btn">Disclaimer</a>
+        <a href="legal.html#ai-spaceos" class="legal-btn">AI &amp; SpaceOS</a>
+        <a href="legal.html#security" class="legal-btn">Security</a>
+        <a href="legal.html#data-api" class="legal-btn">Data &amp; API</a>
+        <a href="legal.html#refunds" class="legal-btn">Refund Policy</a>
+      </div>
+    </div>
+    <div class="copyright">
+&copy; 2026 <a href="https://antellay.in/" target="_blank" rel="noopener noreferrer" class="footer-link">ANTELLAY Labs</a>. All Rights Reserved. A <a href="https://celebso.com/" target="_blank" rel="noopener noreferrer" class="footer-link">Celebso Group</a> Company.
 </div>
     
 </footer>
