@@ -1,0 +1,2284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions | ANTELLAY Space</title>
+  <meta name="description" content="Official Terms &amp; Conditions governing the ANTELLAY Space platform, SpaceOS services, telemetry, and analytical APIs. Operated by ANTELLAY Labs.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+
+    :root {
+      --bg-dark: #030712;
+      --card-bg: rgba(11, 19, 36, 0.82);
+      --card-border: rgba(148, 163, 184, 0.14);
+      --card-border-hover: rgba(232, 106, 40, 0.45);
+      --accent: #E86A28;
+      --accent-bright: #FF7A29;
+      --accent-glow: rgba(232, 106, 40, 0.3);
+      --text-main: #F1F5F9;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --cyan: #00F0FF;
+      --green: #00E676;
+      --red: #FF3366;
+      --yellow: #FFC107;
+      --purple: #A855F7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #E86A28, #FF7A29, #00F0FF);
+      z-index: 99999;
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+
+    /* Navigation */
+    .legal-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(3, 7, 18, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 14px 24px;
+    }
+
+    .nav-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .nav-brand {
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.8px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-accent {
+      color: var(--accent-bright);
+      text-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #FFFFFF;
+    }
+
+    .btn-pdf-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232, 106, 40, 0.15);
+      border: 1px solid rgba(232, 106, 40, 0.4);
+      color: #FFFFFF;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-pdf-download:hover {
+      background: var(--accent);
+      box-shadow: 0 0 16px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .legal-hero {
+      position: relative;
+      padding: 60px 24px 36px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 10%, rgba(232, 106, 40, 0.12) 0%, transparent 60%);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .badge-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(232, 106, 40, 0.14);
+      border: 1px solid rgba(232, 106, 40, 0.35);
+      color: var(--accent-bright);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    .meta-pills-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      padding: 5px 12px;
+      border-radius: 6px;
+    }
+
+    .meta-pill i {
+      color: var(--accent-bright);
+    }
+
+    /* Executive Highlights */
+    .exec-highlights-box {
+      max-width: 1240px;
+      margin: 32px auto 0;
+      background: rgba(11, 19, 36, 0.7);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 22px 26px;
+    }
+
+    .exec-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 10px;
+    }
+
+    .exec-head h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .exec-head h4 i {
+      color: var(--accent-bright);
+    }
+
+    .exec-note {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .exec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .exec-card {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: all 0.2s ease;
+    }
+
+    .exec-card:hover {
+      border-color: rgba(232, 106, 40, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .exec-card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(232, 106, 40, 0.12);
+      color: var(--accent-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .exec-card-content h5 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+
+    .exec-card-content p {
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Layout & Main Area */
+    .legal-main {
+      max-width: 1240px;
+      width: 100%;
+      margin: 32px auto 60px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Sticky Table of Contents Sidebar */
+    .sticky-toc {
+      position: sticky;
+      top: 80px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sticky-toc::-webkit-scrollbar { width: 4px; }
+    .sticky-toc::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 4px; }
+
+    .toc-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 10px;
+    }
+
+    .toc-search {
+      position: relative;
+    }
+
+    .toc-search input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 8px 12px 8px 30px;
+      color: #FFFFFF;
+      font-size: 12px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .toc-search i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .toc-search input:focus {
+      border-color: var(--accent-bright);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .toc-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .toc-link:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: #FFFFFF;
+    }
+
+    .toc-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-bright);
+      font-weight: 700;
+    }
+
+    /* In-Page Quick Chips */
+    .top-chips-bar {
+      margin-bottom: 24px;
+      background: rgba(11, 19, 36, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+
+    .top-chips-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chips-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      max-height: 120px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .chips-flex::-webkit-scrollbar { width: 3px; }
+    .chips-flex::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 3px; }
+
+    .toc-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .toc-chip:hover {
+      background: rgba(232, 106, 40, 0.14);
+      border-color: rgba(232, 106, 40, 0.4);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .chip-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--accent-bright);
+      font-size: 10px;
+    }
+
+    /* Section Cards */
+    .doc-sections-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .legal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      scroll-margin-top: 90px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .legal-card:hover {
+      border-color: var(--card-border-hover);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .legal-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 16px 22px;
+      background: rgba(15, 23, 42, 0.6);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sec-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(232, 106, 40, 0.15);
+      border: 1px solid rgba(232, 106, 40, 0.35);
+      color: var(--accent-bright);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin: 0;
+      letter-spacing: 0.2px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sec-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .tag-neutral { background: rgba(255, 255, 255, 0.05); color: var(--text-muted); border: 1px solid var(--card-border); }
+    .tag-success { background: rgba(0, 230, 118, 0.12); color: var(--green); border: 1px solid rgba(0, 230, 118, 0.3); }
+    .tag-warning { background: rgba(255, 193, 7, 0.12); color: var(--yellow); border: 1px solid rgba(255, 193, 7, 0.3); }
+    .tag-danger  { background: rgba(255, 51, 102, 0.12); color: var(--red); border: 1px solid rgba(255, 51, 102, 0.3); }
+    .tag-info    { background: rgba(0, 240, 255, 0.1); color: var(--cyan); border: 1px solid rgba(0, 240, 255, 0.3); }
+    .tag-legal   { background: rgba(168, 85, 247, 0.12); color: #C084FC; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .tag-ai      { background: rgba(232, 106, 40, 0.15); color: var(--accent-bright); border: 1px solid rgba(232, 106, 40, 0.4); }
+    .tag-ip      { background: rgba(59, 130, 246, 0.12); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .tag-contact { background: rgba(16, 185, 129, 0.12); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    .copy-anchor-btn {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .copy-anchor-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .legal-card-body {
+      padding: 24px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #CBD5E1;
+    }
+
+    .clause-lead {
+      font-size: 14.5px;
+      color: #E2E8F0;
+      margin-bottom: 16px;
+    }
+
+    /* Structured Components Inside Cards */
+    .compare-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    .compare-card {
+      border-radius: 10px;
+      padding: 18px 20px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--card-border);
+    }
+
+    .compare-card.permitted {
+      border-color: rgba(0, 230, 118, 0.25);
+      background: linear-gradient(180deg, rgba(0, 230, 118, 0.04) 0%, rgba(15, 23, 42, 0.6) 100%);
+    }
+
+    .compare-card.prohibited {
+      border-color: rgba(255, 51, 102, 0.25);
+      background: linear-gradient(180deg, rgba(255, 51, 102, 0.04) 0%, rgba(15, 23, 42, 0.6) 100%);
+    }
+
+    .compare-card-head {
+      margin-bottom: 14px;
+    }
+
+    .compare-card-head h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-top: 6px;
+    }
+
+    .badge-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .badge-status.perm { background: rgba(0, 230, 118, 0.15); color: var(--green); }
+    .badge-status.proh { background: rgba(255, 51, 102, 0.15); color: var(--red); }
+
+    .structured-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .structured-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .perm-bullets li i { color: var(--green); margin-top: 4px; flex-shrink: 0; }
+    .proh-bullets li i { color: var(--red); margin-top: 4px; flex-shrink: 0; }
+    .default-bullets li i { color: var(--accent-bright); margin-top: 4px; flex-shrink: 0; font-size: 11px; }
+
+    /* Callout Boxes */
+    .callout-box {
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .callout-box.info-box {
+      background: rgba(0, 240, 255, 0.06);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-left: 4px solid var(--cyan);
+    }
+    .callout-box.info-box i { color: var(--cyan); font-size: 18px; margin-top: 2px; }
+
+    .callout-box.warning-box {
+      background: rgba(255, 193, 7, 0.06);
+      border: 1px solid rgba(255, 193, 7, 0.25);
+      border-left: 4px solid var(--yellow);
+    }
+    .callout-box.warning-box i { color: var(--yellow); font-size: 18px; margin-top: 2px; }
+
+    .callout-box.success-box {
+      background: rgba(0, 230, 118, 0.06);
+      border: 1px solid rgba(0, 230, 118, 0.25);
+      border-left: 4px solid var(--green);
+    }
+    .callout-box.success-box i { color: var(--green); font-size: 18px; margin-top: 2px; }
+
+    .callout-box.critical-box {
+      background: rgba(255, 51, 102, 0.08);
+      border: 1px solid rgba(255, 51, 102, 0.35);
+      border-left: 4px solid var(--red);
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .critical-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--red);
+      background: rgba(255, 51, 102, 0.15);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .critical-box h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      color: #FFFFFF;
+      margin: 0;
+    }
+
+    .critical-rule {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 51, 102, 0.3);
+      padding: 12px 14px;
+      border-radius: 6px;
+      margin-top: 6px;
+    }
+
+    .critical-rule i { color: var(--red); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+    .critical-rule p { margin: 0; font-size: 13px; color: #F8FAFC; }
+
+    /* Highlights & Limitations Grids */
+    .highlight-feature-grid, .ip-split-grid, .scope-pillars-grid, .security-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .h-card, .ip-card, .pillar-card, .sec-pillar {
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .h-card:hover, .ip-card:hover, .pillar-card:hover, .sec-pillar:hover {
+      border-color: rgba(232, 106, 40, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .h-card { display: flex; gap: 14px; align-items: flex-start; }
+    .h-card i { font-size: 20px; color: var(--accent-bright); margin-top: 2px; flex-shrink: 0; }
+    .h-text h5, .ip-card h5, .pillar-card h6, .sec-pillar h6 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .h-text p, .ip-card p, .pillar-card p, .sec-pillar p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .pillar-card i, .sec-pillar i {
+      font-size: 22px;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+
+    .data-limitations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .limitation-item {
+      display: flex;
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .lim-icon {
+      font-size: 16px;
+      color: var(--accent-bright);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .limitation-item h6 { font-size: 13px; font-weight: 600; color: #FFFFFF; margin-bottom: 2px; }
+    .limitation-item p { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+    /* AI Card */
+    .ai-governance-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(232, 106, 40, 0.35);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 16px 0;
+    }
+
+    .ai-gov-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+    }
+
+    .ai-gov-header i { font-size: 24px; color: var(--accent-bright); }
+    .ai-gov-header h5 { font-size: 15px; color: #FFFFFF; margin-bottom: 2px; }
+    .ai-gov-header p { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+    /* Warranties & Liability */
+    .warranty-exclusions-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .w-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+    .w-item i { color: var(--yellow); font-size: 13px; flex-shrink: 0; }
+
+    .liability-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .l-card {
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .l-card i { color: var(--red); font-size: 16px; margin-bottom: 6px; display: block; }
+    .l-card strong { font-size: 13px; color: #FFFFFF; display: block; margin-bottom: 4px; }
+    .l-card p { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+    /* Jurisdiction Card */
+    .jurisdiction-featured-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(26, 17, 36, 0.85) 100%);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin: 16px 0;
+    }
+
+    .j-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .flag-img { border-radius: 3px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); }
+    .j-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #C084FC; letter-spacing: 0.6px; display: block; margin-bottom: 2px; }
+    .j-header h4 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; color: #FFFFFF; margin: 0; }
+
+    .j-court-box {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+    }
+    .j-court-box i { font-size: 20px; color: #C084FC; flex-shrink: 0; }
+    .j-court-box strong { font-size: 13px; color: #FFFFFF; display: block; margin-bottom: 2px; }
+    .j-court-box p { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+    /* Contact Card */
+    .official-contact-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(232, 106, 40, 0.35);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 16px 0;
+    }
+
+    .c-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .c-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 0 16px var(--accent-glow);
+      flex-shrink: 0;
+    }
+
+    .c-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-bright);
+      letter-spacing: 0.6px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .c-head h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      color: #FFFFFF;
+      margin: 0 0 2px;
+    }
+
+    .c-head p { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+    .channels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .c-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(11, 19, 36, 0.7);
+      border: 1px solid rgba(232, 106, 40, 0.25);
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .c-pill:hover {
+      background: rgba(232, 106, 40, 0.15);
+      border-color: var(--accent-bright);
+      transform: translateY(-2px);
+    }
+
+    .c-pill i { font-size: 16px; color: var(--accent-bright); flex-shrink: 0; }
+    .pill-info { display: flex; flex-direction: column; }
+    .p-title { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+    .p-val { font-size: 13px; font-weight: 600; color: #FFFFFF; }
+
+    /* Privacy Specific Elements */
+    .data-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .dtype-card {
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .dtype-card i { color: var(--cyan); font-size: 16px; margin-bottom: 6px; display: block; }
+    .dtype-card strong { font-size: 13px; color: #FFFFFF; display: block; margin-bottom: 2px; }
+    .dtype-card span { font-size: 12px; color: var(--text-muted); }
+
+    .telemetry-table-wrapper {
+      overflow-x: auto;
+      margin: 16px 0;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+    }
+
+    .styled-legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    .styled-legal-table th {
+      background: rgba(15, 23, 42, 0.85);
+      padding: 12px 16px;
+      color: #FFFFFF;
+      font-weight: 600;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .styled-legal-table td {
+      padding: 12px 16px;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .styled-legal-table tr:last-child td { border-bottom: none; }
+    .styled-legal-table td strong { color: #FFFFFF; }
+
+    .cookie-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .c-type-card {
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .c-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
+    .c-type-card.essential .c-badge { background: rgba(0, 230, 118, 0.15); color: var(--green); }
+    .c-type-card.functional .c-badge { background: rgba(0, 240, 255, 0.15); color: var(--cyan); }
+    .c-type-card.analytics .c-badge { background: rgba(168, 85, 247, 0.15); color: #C084FC; }
+    .c-type-card h5 { font-size: 13.5px; font-weight: 600; color: #FFFFFF; margin-bottom: 4px; }
+    .c-type-card p { font-size: 12px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    .shield-guarantee-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(135deg, rgba(0, 230, 118, 0.08) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(0, 230, 118, 0.35);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 16px 0;
+    }
+
+    .s-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(0, 230, 118, 0.18);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .s-text h4 { font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #FFFFFF; margin-bottom: 2px; }
+    .s-text p { font-size: 13px; color: var(--text-muted); margin: 0; }
+
+    .rights-action-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .r-card {
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px;
+      position: relative;
+    }
+
+    .r-num {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-bright);
+      opacity: 0.6;
+    }
+
+    .r-card h5 { font-size: 13.5px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; padding-right: 28px; }
+    .r-card p { font-size: 12px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    /* Footer Styles */
+    .legal-footer {
+      margin-top: auto;
+      background: #02040A;
+      border-top: 1px solid var(--card-border);
+      padding: 36px 24px;
+    }
+
+    .footer-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-legal-bar {
+      margin-bottom: 20px;
+    }
+
+    .footer-legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .legal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 12px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .legal-btn:hover {
+      background: rgba(232, 106, 40, 0.15);
+      border-color: var(--accent-bright);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 18px;
+    }
+
+    .copyright-subdued {
+      color: #475569;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .prominent-legal-link {
+      color: #F8FAFC !important;
+      font-weight: 700 !important;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .prominent-legal-link:hover {
+      color: var(--accent-bright) !important;
+      border-bottom-color: var(--accent-bright);
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .contact-strip {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .contact-strip a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-strip a:hover {
+      color: #FFFFFF;
+    }
+
+    /* Toast Notification */
+    #toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--accent-bright);
+      color: #FFFFFF;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 99999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    #toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .legal-main {
+        grid-template-columns: 1fr;
+      }
+      .sticky-toc {
+        display: none;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+
+  
+    /* Clean Minimal Header: Only Project Logo on Side */
+    .legal-clean-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(3, 7, 18, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--legal-card-border);
+      padding: 14px 28px;
+    }
+
+    .legal-header-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .legal-clean-header .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #FFFFFF;
+    }
+
+    .legal-clean-header .mark {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+    }
+
+    .legal-clean-header .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.8px;
+      color: #FFFFFF;
+    }
+
+    .legal-clean-header .brand-sub {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.8px;
+      color: var(--legal-accent-bright);
+      margin-left: 5px;
+    }
+
+    .legal-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--legal-muted);
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--legal-card-border);
+    }
+
+    .nav-back-link:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateX(-2px);
+    }
+
+    .btn-pdf-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(232, 106, 40, 0.15);
+      border: 1px solid rgba(232, 106, 40, 0.4);
+      color: #FFFFFF;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-pdf-pill:hover {
+      background: var(--legal-accent);
+      box-shadow: 0 0 16px var(--legal-accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .legal-shell {
+      padding-top: 24px !important;
+    }
+
+    .legal-sidebar {
+      top: 80px !important;
+      max-height: calc(100vh - 100px) !important;
+    }
+
+    .sidebar-search-box {
+      position: relative;
+      margin: 8px 0 10px;
+    }
+
+    .sidebar-search-box i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      color: var(--legal-dim);
+    }
+
+    .sidebar-search-box input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--legal-card-border);
+      border-radius: 6px;
+      padding: 8px 12px 8px 30px;
+      color: #FFFFFF;
+      font-size: 12px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-search-box input:focus {
+      border-color: var(--legal-accent-bright);
+      box-shadow: 0 0 10px var(--legal-accent-glow);
+    }
+
+</style>
+</head>
+<body>
+  <div id="reading-progress"></div>
+  <div id="toast-msg"><i class="fa-solid fa-check"></i> <span>Notification</span></div>
+
+
+  <!-- Top Navigation Header -->
+  <header class="legal-clean-header">
+    <div class="legal-header-inner">
+      <a class="brand" href="index.html" aria-label="Antellay Space Home">
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true" style="width:30px;height:30px;">
+          <path d="M24 4 6 43l18-12 18 12L24 4Z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M24 15v16M17 35l7-4 7 4" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span style="display:inline-flex;align-items:center;margin-left:8px;"><span class="brand-name" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#fff;">ANTELLAY</span><span class="brand-sub" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#FF7A29;margin-left:5px;">SPACE</span></span>
+      </a>
+      <div class="legal-header-actions">
+        <a href="index.html" class="nav-back-link"><i class="fa-solid fa-arrow-left"></i> <span>Back to Home</span></a>
+        <a href="Antellay_Terms_Conditions.pdf" download="Antellay_Space_Legal_Terms.pdf" class="btn-pdf-pill">
+          <i class="fa-solid fa-file-pdf"></i> <span>Official PDF</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Executive Highlights -->
+  <div class="exec-highlights-box">
+    <div class="exec-head">
+      <h4><i class="fa-solid fa-bolt"></i> Key Highlights at a Glance</h4>
+      <span class="exec-note">Executive summary of core principles (25 Clauses in Full Document)</span>
+    </div>
+    <div class="exec-grid">
+      <div class="exec-card">
+        <div class="exec-card-icon"><i class="fa-solid fa-satellite"></i></div>
+        <div class="exec-card-content">
+          <h5>Space Tech &amp; AI Purpose</h5>
+          <p>Software, telemetry analysis, orbital visualizations, and AI models for the global space economy.</p>
+        </div>
+      </div>
+      <div class="exec-card">
+        <div class="exec-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="exec-card-content">
+          <h5>No Sole Flight Reliance</h5>
+          <p>Analytical and decision-support tool; not certified as sole flight/emergency control without custom SLA.</p>
+        </div>
+      </div>
+      <div class="exec-card">
+        <div class="exec-card-icon"><i class="fa-solid fa-copyright"></i></div>
+        <div class="exec-card-content">
+          <h5>Proprietary SpaceOS</h5>
+          <p>All software, models, and branding belong to ANTELLAY Labs. Third-party data remains with owners.</p>
+        </div>
+      </div>
+      <div class="exec-card">
+        <div class="exec-card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+        <div class="exec-card-content">
+          <h5>Governing Jurisdiction</h5>
+          <p>Governed by the laws of India, with exclusive judicial jurisdiction vested in courts of Jaipur, Rajasthan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="legal-main">
+    <!-- Sticky Table of Contents Sidebar -->
+    <aside class="sticky-toc">
+      <div class="toc-title"><i class="fa-solid fa-list-ol"></i> Table of Contents</div>
+      <div class="toc-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Filter clauses..." onkeyup="filterClauses(this.value)">
+      </div>
+      <div id="search-match-count" style="display:none; font-size:11px; color:var(--accent-bright); font-weight:600;"></div>
+      <div class="toc-list">
+        <a href="#terms-sec-1" class="toc-link"><span class="toc-num">01</span> <span>About ANTELLAY Space</span></a>
+<a href="#terms-sec-2" class="toc-link"><span class="toc-num">02</span> <span>Use of the Platform</span></a>
+<a href="#terms-sec-3" class="toc-link"><span class="toc-num">03</span> <span>Satellite and Orbital Data</span></a>
+<a href="#terms-sec-4" class="toc-link"><span class="toc-num">04</span> <span>Accuracy of Information</span></a>
+<a href="#terms-sec-5" class="toc-link"><span class="toc-num">05</span> <span>AI, Analytics and SpaceOS</span></a>
+<a href="#terms-sec-6" class="toc-link"><span class="toc-num">06</span> <span>No Mission-Critical Guarantee</span></a>
+<a href="#terms-sec-7" class="toc-link"><span class="toc-num">07</span> <span>Third-Party Services and Data</span></a>
+<a href="#terms-sec-8" class="toc-link"><span class="toc-num">08</span> <span>Intellectual Property</span></a>
+<a href="#terms-sec-9" class="toc-link"><span class="toc-num">09</span> <span>User Content and Submissions</span></a>
+<a href="#terms-sec-10" class="toc-link"><span class="toc-num">10</span> <span>Security</span></a>
+<a href="#terms-sec-11" class="toc-link"><span class="toc-num">11</span> <span>Availability and Changes</span></a>
+<a href="#terms-sec-12" class="toc-link"><span class="toc-num">12</span> <span>Investment and Financial Disclaimer</span></a>
+<a href="#terms-sec-13" class="toc-link"><span class="toc-num">13</span> <span>External Links</span></a>
+<a href="#terms-sec-14" class="toc-link"><span class="toc-num">14</span> <span>Disclaimer of Warranties</span></a>
+<a href="#terms-sec-15" class="toc-link"><span class="toc-num">15</span> <span>Limitation of Liability</span></a>
+<a href="#terms-sec-16" class="toc-link"><span class="toc-num">16</span> <span>Indemnification</span></a>
+<a href="#terms-sec-17" class="toc-link"><span class="toc-num">17</span> <span>Privacy</span></a>
+<a href="#terms-sec-18" class="toc-link"><span class="toc-num">18</span> <span>Cookies and Similar Technologies</span></a>
+<a href="#terms-sec-19" class="toc-link"><span class="toc-num">19</span> <span>Regulatory Compliance</span></a>
+<a href="#terms-sec-20" class="toc-link"><span class="toc-num">20</span> <span>Termination</span></a>
+<a href="#terms-sec-21" class="toc-link"><span class="toc-num">21</span> <span>Changes to These Terms</span></a>
+<a href="#terms-sec-22" class="toc-link"><span class="toc-num">22</span> <span>Governing Law</span></a>
+<a href="#terms-sec-23" class="toc-link"><span class="toc-num">23</span> <span>Severability</span></a>
+<a href="#terms-sec-24" class="toc-link"><span class="toc-num">24</span> <span>Entire Agreement</span></a>
+<a href="#terms-sec-25" class="toc-link"><span class="toc-num">25</span> <span>Contact Us</span></a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="legal-content">
+      <div class="top-chips-bar">
+        <div class="top-chips-title"><i class="fa-solid fa-bolt"></i> Quick Jump to Clause (25 Sections):</div>
+        <div class="chips-flex">
+          <a href="#terms-sec-1" class="toc-chip"><span class="chip-num">01</span> About ANTELLAY Space</a>
+<a href="#terms-sec-2" class="toc-chip"><span class="chip-num">02</span> Use of the Platform</a>
+<a href="#terms-sec-3" class="toc-chip"><span class="chip-num">03</span> Satellite and Orbital Data</a>
+<a href="#terms-sec-4" class="toc-chip"><span class="chip-num">04</span> Accuracy of Information</a>
+<a href="#terms-sec-5" class="toc-chip"><span class="chip-num">05</span> AI, Analytics and SpaceOS</a>
+<a href="#terms-sec-6" class="toc-chip"><span class="chip-num">06</span> No Mission-Critical Guarantee</a>
+<a href="#terms-sec-7" class="toc-chip"><span class="chip-num">07</span> Third-Party Services and Data</a>
+<a href="#terms-sec-8" class="toc-chip"><span class="chip-num">08</span> Intellectual Property</a>
+<a href="#terms-sec-9" class="toc-chip"><span class="chip-num">09</span> User Content and Submissions</a>
+<a href="#terms-sec-10" class="toc-chip"><span class="chip-num">10</span> Security</a>
+<a href="#terms-sec-11" class="toc-chip"><span class="chip-num">11</span> Availability and Changes</a>
+<a href="#terms-sec-12" class="toc-chip"><span class="chip-num">12</span> Investment and Financial Disclaimer</a>
+<a href="#terms-sec-13" class="toc-chip"><span class="chip-num">13</span> External Links</a>
+<a href="#terms-sec-14" class="toc-chip"><span class="chip-num">14</span> Disclaimer of Warranties</a>
+<a href="#terms-sec-15" class="toc-chip"><span class="chip-num">15</span> Limitation of Liability</a>
+<a href="#terms-sec-16" class="toc-chip"><span class="chip-num">16</span> Indemnification</a>
+<a href="#terms-sec-17" class="toc-chip"><span class="chip-num">17</span> Privacy</a>
+<a href="#terms-sec-18" class="toc-chip"><span class="chip-num">18</span> Cookies and Similar Technologies</a>
+<a href="#terms-sec-19" class="toc-chip"><span class="chip-num">19</span> Regulatory Compliance</a>
+<a href="#terms-sec-20" class="toc-chip"><span class="chip-num">20</span> Termination</a>
+<a href="#terms-sec-21" class="toc-chip"><span class="chip-num">21</span> Changes to These Terms</a>
+<a href="#terms-sec-22" class="toc-chip"><span class="chip-num">22</span> Governing Law</a>
+<a href="#terms-sec-23" class="toc-chip"><span class="chip-num">23</span> Severability</a>
+<a href="#terms-sec-24" class="toc-chip"><span class="chip-num">24</span> Entire Agreement</a>
+<a href="#terms-sec-25" class="toc-chip"><span class="chip-num">25</span> Contact Us</a>
+        </div>
+      </div>
+
+      <div class="doc-sections-container">
+        
+        <section class="legal-card" id="terms-sec-1">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">01</span>
+              <h3 class="card-title">About ANTELLAY Space</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-success">PLATFORM SCOPE</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-1')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <p class="clause-lead">ANTELLAY Space is a frontier space-technology initiative operated by <strong>ANTELLAY Labs</strong>, developing artificial intelligence, simulation systems, and software infrastructure for the global space economy.</p>
+            <div class="highlight-feature-grid">
+              <div class="h-card">
+                <i class="fa-solid fa-satellite-dish"></i>
+                <div class="h-text">
+                  <h5>Telemetry & Sourcing</h5>
+                  <p>Aggregates satellite, orbital, Earth observation, space-weather, and geospatial data from public catalogs and authorized providers.</p>
+                </div>
+              </div>
+              <div class="h-card">
+                <i class="fa-solid fa-microchip"></i>
+                <div class="h-text">
+                  <h5>SpaceOS Architecture</h5>
+                  <p>Proprietary analytical engines, machine-learning models, and orbital visualization software developed by ANTELLAY Labs.</p>
+                </div>
+              </div>
+            </div>
+            <div class="callout-box info-box">
+              <i class="fa-solid fa-circle-info"></i>
+              <div>
+                <strong>Non-Ownership of External Satellites</strong>
+                <p>ANTELLAY Space does not necessarily own, operate, control, or maintain the physical spacecraft, sensors, ground stations, or external space infrastructure from which telemetry and data originate.</p>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-2">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">02</span>
+              <h3 class="card-title">Use of the Platform</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-warning">ACCEPTABLE USE</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-2')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <p class="clause-lead">You agree to access and utilize the ANTELLAY Space Platform strictly within lawful parameters and under the operational boundaries specified below:</p>
+            <div class="compare-container">
+              <div class="compare-card permitted">
+                <div class="compare-card-head">
+                  <span class="badge-status perm"><i class="fa-solid fa-circle-check"></i> PERMITTED ACTIVITIES</span>
+                  <h4>Authorized Platform Use</h4>
+                </div>
+                <ul class="structured-bullets perm-bullets">
+                  <li><i class="fa-solid fa-check"></i> <span>Exploring satellite telemetry, orbital coordinates, and space domain visualizations.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span>Academic research, scientific inquiry, technological exploration, and education.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span>Evaluating ANTELLAY Space enterprise capabilities and upcoming SpaceOS features.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span>Consuming authorized API feeds within agreed rate limits and quotas.</span></li>
+                  <li><i class="fa-solid fa-check"></i> <span>Benchmarking mission parameters and simulation models in accordance with these Terms.</span></li>
+                </ul>
+              </div>
+              <div class="compare-card prohibited">
+                <div class="compare-card-head">
+                  <span class="badge-status proh"><i class="fa-solid fa-circle-xmark"></i> STRICTLY FORBIDDEN</span>
+                  <h4>Prohibited Operations</h4>
+                </div>
+                <ul class="structured-bullets proh-bullets">
+                  <li><i class="fa-solid fa-xmark"></i> <span>Unlawful, malicious, fraudulent, or hazardous operations.</span></li>
+                  <li><i class="fa-solid fa-xmark"></i> <span>Attempting unauthorized penetration, brute-force, or infrastructure exploitation.</span></li>
+                  <li><i class="fa-solid fa-xmark"></i> <span>Automated scraping, excessive polling, or denial-of-service (DoS) attacks.</span></li>
+                  <li><i class="fa-solid fa-xmark"></i> <span>Interfering with, jamming, or spoofing satellite communication or telemetry.</span></li>
+                  <li><i class="fa-solid fa-xmark"></i> <span>Reverse engineering, decompiling, or disassembling SpaceOS proprietary algorithms.</span></li>
+                  <li><i class="fa-solid fa-xmark"></i> <span>Misrepresenting ANTELLAY Space data, credentials, partnerships, or official capabilities.</span></li>
+                </ul>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-3">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">03</span>
+              <h3 class="card-title">Satellite and Orbital Data</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-info">DATA GOVERNANCE</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-3')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <p class="clause-lead">ANTELLAY Space displays and processes orbital mechanics, Two-Line Element sets (TLEs), satellite positions, space-weather metrics, and Earth observation imagery derived from third-party and public scientific feeds.</p>
+            <div class="data-limitations-grid">
+              <div class="limitation-item">
+                <span class="lim-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
+                <div>
+                  <h6>Provider Latency</h6>
+                  <p>Orbital data may experience ingestion latency, ground-station propagation delays, and calculation revisions.</p>
+                </div>
+              </div>
+              <div class="limitation-item">
+                <span class="lim-icon"><i class="fa-solid fa-arrows-rotate"></i></span>
+                <div>
+                  <h6>Periodic Recalculations</h6>
+                  <p>Orbital perturbations and solar flux require periodic ephemeris recalculations which may cause positional shifts.</p>
+                </div>
+              </div>
+              <div class="limitation-item">
+                <span class="lim-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                <div>
+                  <h6>No Control Implied</h6>
+                  <p>Displaying a satellite or object does not imply operational commanding or bilateral communication with that spacecraft.</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-4">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">04</span>
+              <h3 class="card-title">Accuracy of Information</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-warning">VERIFICATION</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-4')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <p class="clause-lead">While reasonable engineering efforts are made to deliver reliable analytics, ANTELLAY Space does not warrant that all platform data will be continuous, error-free, or instantaneously updated.</p>
+            <div class="callout-box warning-box">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <div>
+                <strong>Mandatory Independent Verification</strong>
+                <p>Real-time telemetry may change without notice. You must independently cross-verify any mission-critical, scientific, safety, or financial data with primary sources before making operational commitments.</p>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-5">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">05</span>
+              <h3 class="card-title">AI, Analytics and SpaceOS</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-ai">AI & SPACEOS</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-5')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <p class="clause-lead">The platform integrates predictive models, machine learning algorithms, and synthetic orbital simulations branded as <strong>SpaceOS</strong>.</p>
+            <div class="ai-governance-card">
+              <div class="ai-gov-header">
+                <i class="fa-solid fa-brain"></i>
+                <div>
+                  <h5>Algorithmic Decision-Support Boundaries</h5>
+                  <p>AI outputs are analytical aids and must not replace certified aerospace engineering validation.</p>
+                </div>
+              </div>
+              <ul class="structured-bullets">
+                <li><i class="fa-solid fa-angle-right"></i> <span>Predictions and trajectory projections represent mathematical estimates based on historical datasets.</span></li>
+                <li><i class="fa-solid fa-angle-right"></i> <span>Human flight controllers and engineers retain full responsibility for all downstream space mission decisions.</span></li>
+                <li><i class="fa-solid fa-angle-right"></i> <span>ANTELLAY Space assumes no liability for orbital maneuvers executed on automated model predictions alone.</span></li>
+              </ul>
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-6">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">06</span>
+              <h3 class="card-title">No Mission-Critical Guarantee</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-danger">MISSION CRITICAL</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-6')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <div class="callout-box critical-box">
+              <div class="critical-badge"><i class="fa-solid fa-shield-halved"></i> MISSION-CRITICAL DISCLAIMER</div>
+              <h4>No Certified Sole Flight or Emergency System Reliance</h4>
+              <p>Unless expressly agreed under a formal, executed enterprise Service Level Agreement (SLA), the ANTELLAY Space platform is <strong>NOT</strong> certified as a primary safety-critical, navigation-critical, defense-critical, aviation-critical, or life-support emergency system.</p>
+              <div class="critical-rule">
+                <i class="fa-solid fa-ban"></i>
+                <p>Do NOT rely solely on this platform for operational decisions where system interruption, latency, or inaccurate data could result in death, personal injury, orbital collisions, spacecraft loss, environmental damage, or severe financial catastrophe.</p>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-7">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">07</span>
+              <h3 class="card-title">Third-Party Services and Data</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">OPERATIONAL STANDARD</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-7')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">The Platform may depend on third-party APIs, data providers, cloud infrastructure, datasets, maps, satellite catalogs, hosting services, analytics services, or other external technologies. ANTELLAY Space is not responsible for interruptions, changes, inaccuracies, restrictions, pricing changes, or discontinuation of third-party services. Third-party services may have their own terms, licenses, privacy policies, and usage restrictions. Your use of such services may be subject to those additional terms.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-8">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">08</span>
+              <h3 class="card-title">Intellectual Property</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-ip">INTELLECTUAL PROPERTY</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-8')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <p class="clause-lead">All proprietary assets, source code, UI/UX designs, algorithmic architectures, and branding are protected under international copyright and intellectual property treaties.</p>
+            <div class="ip-split-grid">
+              <div class="ip-card proprietary">
+                <h5><i class="fa-solid fa-copyright"></i> ANTELLAY Labs Ownership</h5>
+                <p>The ANTELLAY Space name, logo, SpaceOS engine, orbital calculation code, custom models, documentation, and interface graphics belong exclusively to <strong>ANTELLAY Labs</strong>.</p>
+              </div>
+              <div class="ip-card thirdparty">
+                <h5><i class="fa-solid fa-share-nodes"></i> Third-Party Sourced Data</h5>
+                <p>Third-party satellite catalogs, NASA/ESA telemetry, and public ephemeris datasets remain the intellectual property of their respective creators and agencies.</p>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-9">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">09</span>
+              <h3 class="card-title">User Content and Submissions</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">OPERATIONAL STANDARD</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-9')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">If you voluntarily submit information, ideas, feedback, technical suggestions, questions, or other content to ANTELLAY Space, you represent that you have the right to provide such content. By submitting feedback or suggestions, you grant ANTELLAY Space permission to use such feedback for improving, developing, or evaluating its products and services, unless otherwise agreed in writing. You should not submit confidential, classified, proprietary, or sensitive information through publicly accessible areas of the Platform.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-10">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">10</span>
+              <h3 class="card-title">Security</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-info">SECURITY</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-10')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">We take reasonable measures to protect the Platform and its infrastructure. However, no internet-based system can be guaranteed to be completely secure. You agree not to attempt to bypass security controls, access restricted systems, introduce malicious code, conduct unauthorized penetration testing, or otherwise interfere with the security of the Platform without prior written authorization.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-11">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">11</span>
+              <h3 class="card-title">Availability and Changes</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">POLICY UPDATES</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-11')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">ANTELLAY Space may modify, update, suspend, restrict, or discontinue any part of the Platform or its features at any time. We may also add new products, technologies, data sources, AI capabilities, APIs, simulations, or other functionality in the future. Information describing future products, capabilities, roadmaps, or planned technologies represents our current direction and may change without notice. Such statements should not automatically be interpreted as a guarantee that a particular product or capability will be launched.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-12">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">12</span>
+              <h3 class="card-title">Investment and Financial Disclaimer</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-warning">DISCLAIMER</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-12')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">Nothing on the ANTELLAY Space website constitutes an offer, solicitation, recommendation, or invitation to purchase securities or make an investment. Any information regarding funding, partnerships, business plans, market opportunities, future products, growth plans, or commercial opportunities is provided for general informational purposes only. Any investment or commercial transaction with ANTELLAY Labs or an associated entity will be subject to separate documentation and applicable laws.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-13">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">13</span>
+              <h3 class="card-title">External Links</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">OPERATIONAL STANDARD</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-13')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">The Platform may contain links to third-party websites, services, documentation, data sources, or platforms. Such links are provided for convenience and do not necessarily constitute an endorsement or guarantee by ANTELLAY Space. We are not responsible for the content, availability, security, privacy practices, or policies of third-party websites.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-14">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">14</span>
+              <h3 class="card-title">Disclaimer of Warranties</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">WARRANTIES</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-14')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <p class="clause-lead">To the fullest extent permissible under applicable law, the Platform, APIs, and all SpaceOS services are provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind.</p>
+            <div class="warranty-exclusions-list">
+              <div class="w-item"><i class="fa-solid fa-circle-xmark"></i> <span>No guarantee of uninterrupted or error-free platform uptime.</span></div>
+              <div class="w-item"><i class="fa-solid fa-circle-xmark"></i> <span>No warranty regarding complete accuracy or timeliness of third-party satellite feeds.</span></div>
+              <div class="w-item"><i class="fa-solid fa-circle-xmark"></i> <span>No implied warranty of merchantability or fitness for a particular commercial mission.</span></div>
+              <div class="w-item"><i class="fa-solid fa-circle-xmark"></i> <span>No guarantee that simulation outputs will match unmodeled real-world space anomalies.</span></div>
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-15">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">15</span>
+              <h3 class="card-title">Limitation of Liability</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-danger">LIABILITY</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-15')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <p class="clause-lead">To the maximum extent permitted by applicable law, ANTELLAY Labs, ANTELLAY Space, and their officers, directors, contractors, and affiliates shall not be liable for:</p>
+            <div class="liability-grid">
+              <div class="l-card"><i class="fa-solid fa-arrow-trend-down"></i> <strong>Indirect or Consequential Damages</strong><p>Loss of revenue, anticipated profits, mission delays, or commercial goodwill.</p></div>
+              <div class="l-card"><i class="fa-solid fa-database"></i> <strong>Telemetry & Data Loss</strong><p>Loss, corruption, or delays in satellite telemetry, sensor records, or orbital predictions.</p></div>
+              <div class="l-card"><i class="fa-solid fa-satellite"></i> <strong>Spacecraft Operational Impact</strong><p>Damages arising from user reliance on analytical simulations or AI-generated advisories.</p></div>
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-16">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">16</span>
+              <h3 class="card-title">Indemnification</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-danger">INDEMNITY</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-16')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">You agree to indemnify and hold harmless ANTELLAY Labs, ANTELLAY Space, and their respective directors, employees, contractors, partners, and service providers from claims, liabilities, damages, losses, and expenses arising from:</p>
+<ul class="structured-bullets default-bullets"><li><i class="fa-solid fa-angle-right"></i> <span>Your unlawful or unauthorized use of the Platform</span></li><li><i class="fa-solid fa-angle-right"></i> <span>Your violation of these Terms</span></li><li><i class="fa-solid fa-angle-right"></i> <span>Your violation of third-party rights; or</span></li><li><i class="fa-solid fa-angle-right"></i> <span>Your misuse of Platform data or technology.</span></li></ul>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-17">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">17</span>
+              <h3 class="card-title">Privacy</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">OPERATIONAL STANDARD</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-17')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">Your use of the Platform may also be governed by our Privacy Policy, which explains how information may be collected, used, stored, and processed. By using the Platform, you acknowledge that you have had the opportunity to review the applicable privacy information.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-18">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">18</span>
+              <h3 class="card-title">Cookies and Similar Technologies</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">OPERATIONAL STANDARD</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-18')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">The Platform may use cookies, analytics tools, or similar technologies to maintain functionality, understand website usage, improve user experience, and support security. Where required by applicable law, appropriate consent mechanisms may be provided.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-19">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">19</span>
+              <h3 class="card-title">Regulatory Compliance</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-legal">COMPLIANCE</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-19')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">You are responsible for ensuring that your use of ANTELLAY Space technology, data, software, and information complies with all laws and regulations applicable to you. This may include laws relating to space activities, telecommunications, remote sensing, geospatial data, cybersecurity, export controls, sanctions, data protection, and other applicable regulatory requirements. ANTELLAY Space does not provide legal or regulatory advice through the Platform.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-20">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">20</span>
+              <h3 class="card-title">Termination</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">TERMINATION</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-20')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">We may restrict or terminate access to the Platform where we reasonably believe that a user has violated these Terms, attempted to compromise the Platform, engaged in unlawful activity, or otherwise created a security, legal, or operational risk. You may stop using the Platform at any time.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-21">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">21</span>
+              <h3 class="card-title">Changes to These Terms</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">POLICY UPDATES</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-21')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">We may update these Terms from time to time to reflect changes in our technology, services, legal requirements, or business operations. The updated version will be posted on this page with a revised “Last Updated” date. Your continued use of the Platform after changes are posted constitutes acceptance of the updated Terms, to the extent permitted by applicable law.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-22">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">22</span>
+              <h3 class="card-title">Governing Law</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-legal">GOVERNING LAW</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-22')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <div class="jurisdiction-featured-card">
+              <div class="j-header">
+                <img src="https://flagcdn.com/w40/in.png" alt="India" width="32" height="22" class="flag-img">
+                <div>
+                  <span class="j-badge">EXCLUSIVE JUDICIAL FORUM</span>
+                  <h4>Republic of India &bull; Jaipur Jurisdiction</h4>
+                </div>
+              </div>
+              <div class="j-content">
+                <p>These Terms and all matters arising out of or relating to the ANTELLAY Space platform shall be governed by, construed, and enforced in accordance with the <strong>laws of the Republic of India</strong>, without regard to conflict-of-laws principles.</p>
+                <div class="j-court-box">
+                  <i class="fa-solid fa-landmark"></i>
+                  <div>
+                    <strong>Exclusive Courts of Jaipur, Rajasthan</strong>
+                    <p>Subject to applicable arbitration or mediation agreements, the competent courts located in <strong>Jaipur, Rajasthan, India</strong> shall have exclusive jurisdiction over all disputes.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-23">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">23</span>
+              <h3 class="card-title">Severability</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">OPERATIONAL STANDARD</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-23')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">If any provision of these Terms is determined to be invalid, unlawful, or unenforceable, that provision shall be interpreted or modified to the minimum extent necessary, and the remaining provisions shall continue in full force and effect.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-24">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">24</span>
+              <h3 class="card-title">Entire Agreement</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-neutral">OPERATIONAL STANDARD</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-24')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            <p class="clause-lead">These Terms, together with any applicable Privacy Policy and other policies or agreements expressly incorporated by reference, constitute the understanding governing your use of the Platform.</p>
+          </div>
+        </section>
+        
+
+        <section class="legal-card" id="terms-sec-25">
+          <header class="legal-card-header">
+            <div class="header-left">
+              <span class="sec-badge">25</span>
+              <h3 class="card-title">Contact Us</h3>
+            </div>
+            <div class="header-right">
+              <span class="sec-tag tag-contact">OFFICIAL CONTACT</span>
+              <button class="copy-anchor-btn" onclick="copyClauseLink('terms-sec-25')" title="Copy link to clause">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </header>
+          <div class="legal-card-body">
+            
+            <div class="official-contact-card">
+              <div class="c-head">
+                <div class="c-avatar"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <span class="c-sub">LEGAL & REGULATORY DESK</span>
+                  <h4>ANTELLAY Space Governance</h4>
+                  <p>Operated by <strong>ANTELLAY Labs</strong> &bull; Jaipur, Rajasthan, India</p>
+                </div>
+              </div>
+              <div class="channels-grid">
+                <a href="mailto:space@antellay.com" class="c-pill">
+                  <i class="fa-solid fa-envelope"></i>
+                  <div class="pill-info">
+                    <span class="p-title">Official Legal Email</span>
+                    <span class="p-val">space@antellay.com</span>
+                  </div>
+                </a>
+                <a href="mailto:space.antellay@gmail.com" class="c-pill">
+                  <i class="fa-solid fa-envelope-open-text"></i>
+                  <div class="pill-info">
+                    <span class="p-title">Direct Inquiries</span>
+                    <span class="p-val">space.antellay@gmail.com</span>
+                  </div>
+                </a>
+                <a href="tel:+919784626443" class="c-pill">
+                  <i class="fa-solid fa-phone"></i>
+                  <div class="pill-info">
+                    <span class="p-title">Direct Telephone</span>
+                    <span class="p-val">+91 97846 26443</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Footer Legal Bar -->
+  <footer class="legal-footer">
+    <div class="footer-container">
+      <div class="footer-legal-bar">
+        <div class="footer-legal-links">
+          <a href="terms.html" class="legal-btn"><i class="fa-solid fa-file-contract"></i> Terms &amp; Conditions</a>
+          <a href="privacy.html" class="legal-btn"><i class="fa-solid fa-user-shield"></i> Privacy Policy</a>
+          <a href="legal.html#cookies" class="legal-btn"><i class="fa-solid fa-cookie-bite"></i> Cookie Policy</a>
+          <a href="legal.html#disclaimer" class="legal-btn"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a>
+          <a href="legal.html#ai-spaceos" class="legal-btn"><i class="fa-solid fa-brain"></i> AI &amp; SpaceOS</a>
+          <a href="legal.html#acceptable-use" class="legal-btn"><i class="fa-solid fa-shield-halved"></i> Acceptable Use</a>
+          <a href="legal.html#data-api" class="legal-btn"><i class="fa-solid fa-database"></i> Data &amp; API</a>
+          <a href="legal.html#security" class="legal-btn"><i class="fa-solid fa-lock"></i> Security</a>
+          <a href="legal.html#refunds" class="legal-btn"><i class="fa-solid fa-receipt"></i> Refund Policy</a>
+          <a href="legal.html#notice" class="legal-btn"><i class="fa-solid fa-landmark"></i> Legal Notice</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright-subdued">&copy; 2026 ANTELLAY Space. All rights reserved. A frontier aerospace initiative operated by <a href="https://antellay.in/" target="_blank" rel="noopener noreferrer" class="prominent-legal-link">ANTELLAY Labs</a> &bull; A venture of <a href="https://celebso.com/" target="_blank" rel="noopener noreferrer" class="prominent-legal-link">Celebso Group</a>.</p>
+        <div class="contact-strip">
+          <span><i class="fa-solid fa-envelope"></i> <a href="mailto:space.antellay@gmail.com">space.antellay@gmail.com</a></span>
+          <span>&bull;</span>
+          <span><i class="fa-solid fa-envelope"></i> <a href="mailto:space@antellay.com">space@antellay.com</a></span>
+          <span>&bull;</span>
+          <span><i class="fa-solid fa-location-dot"></i> Jaipur, Rajasthan, India</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script>
+    // Reading Progress
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('reading-progress').style.width = scrolled + '%';
+    });
+
+    // Copy Clause Link with Toast
+    function copyClauseLink(anchorId) {
+      const url = window.location.origin + window.location.pathname + '#' + anchorId;
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('Link to clause copied to clipboard!');
+      }).catch(() => {
+        showToast('Direct link: ' + url);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-msg');
+      toast.querySelector('span').innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // In-Page Clause Search & Filter
+    function filterClauses(query) {
+      const q = query.toLowerCase().trim();
+      const cards = document.querySelectorAll('.legal-card');
+      let matches = 0;
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (!q || text.includes(q)) {
+          card.style.display = 'block';
+          matches++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      const countEl = document.getElementById('search-match-count');
+      if (countEl) {
+        if (q) {
+          countEl.innerText = matches + ' clause(s) found';
+          countEl.style.display = 'block';
+        } else {
+          countEl.style.display = 'none';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
