@@ -1560,9 +1560,6 @@ legal_page_complete = f'''<!DOCTYPE html>
         <p>Comprehensive operational standards, terms of service, privacy practices, and compliance protocols governing the ANTELLAY Space technology platform and space economy operations.</p>
         
         <div class="legal-actions-bar">
-          <a href="Antellay_Terms_Conditions.pdf" download="Antellay_Space_Legal_Terms.pdf" class="legal-action-btn primary">
-            <i class="fa-solid fa-file-pdf"></i> Download Official PDF
-          </a>
           <button onclick="window.print()" class="legal-action-btn secondary">
             <i class="fa-solid fa-print"></i> Print Document
           </button>
